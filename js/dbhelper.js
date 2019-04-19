@@ -9,6 +9,7 @@ class DBHelper {
    */
   static get DATABASE_URL() {
     const port = 8000 // Change this to your server port
+    //it returns a json file in local host
     return `http://localhost:${port}/data/restaurants.json`;
   }
 
@@ -17,9 +18,13 @@ class DBHelper {
    */
   static fetchRestaurants(callback) {
     let xhr = new XMLHttpRequest();
+    /*GET: to retrieve data, DBHelper.DATABASE_URL is the site*/
     xhr.open('GET', DBHelper.DATABASE_URL);
+    //onload means handling success
     xhr.onload = () => {
       if (xhr.status === 200) { // Got a success response from server!
+        /*the meaning of success varies depending on the HTTP method
+        in this case GET: The resource has been fetched and is transmitted in the message body*/
         const json = JSON.parse(xhr.responseText);
         const restaurants = json.restaurants;
         callback(null, restaurants);
@@ -157,7 +162,7 @@ class DBHelper {
    * Map marker for a restaurant.
    */
    static mapMarkerForRestaurant(restaurant, map) {
-    // https://leafletjs.com/reference-1.3.0.html#marker  
+    // https://leafletjs.com/reference-1.3.0.html#marker
     const marker = new L.marker([restaurant.latlng.lat, restaurant.latlng.lng],
       {title: restaurant.name,
       alt: restaurant.name,
@@ -165,7 +170,7 @@ class DBHelper {
       })
       marker.addTo(newMap);
     return marker;
-  } 
+  }
   /* static mapMarkerForRestaurant(restaurant, map) {
     const marker = new google.maps.Marker({
       position: restaurant.latlng,
@@ -178,4 +183,3 @@ class DBHelper {
   } */
 
 }
-
