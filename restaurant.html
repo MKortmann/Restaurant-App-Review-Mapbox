@@ -5,6 +5,7 @@
   <!--According to Microsoft, when using the X-UA-Compatible tag, it should be
   as high as possible in your document head.-->
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Adding the Mapbox-->
   <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
   <!-- Normalize.css for better cross-browser consistency -->
@@ -23,9 +24,9 @@
       <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <ul id="breadcrumb" >
+    <div id="breadcrumb" >
       <li><a href="/">Home</a></li>
-    </ul>
+    </div>
     <!-- End breadcrumb -->
     <!-- End nav -->
   </header>
@@ -49,7 +50,7 @@
     <!-- end restaurant -->
     <!-- Beginning reviews -->
     <section id="reviews-container">
-      <ul id="reviews-list"></ul>
+      <div id="reviews-list"></div>
     </section>
     <!-- End reviews -->
   </main>
