@@ -1,5 +1,9 @@
+/**Support file to the restaurant.html*/
+
 let restaurant;
 var newMap;
+
+
 
 /**
  * Initialize map as soon as the page is loaded.
@@ -15,7 +19,8 @@ initMap = () => {
   fetchRestaurantFromURL((error, restaurant) => {
     if (error) { // Got an error!
       console.error(error);
-    } else {
+    } else { // this 'map' MAKES the connection between the DOM id="map" with
+            //the map
       self.newMap = L.map('map', {
         center: [restaurant.latlng.lat, restaurant.latlng.lng],
         zoom: 16,
@@ -64,6 +69,7 @@ fetchRestaurantFromURL = (callback) => {
     error = 'No restaurant id in URL'
     callback(error, null);
   } else {
+    //with the correct restaurant id, it is ready to load the necessary infos.
     DBHelper.fetchRestaurantById(id, (error, restaurant) => {
       self.restaurant = restaurant;
       if (!restaurant) {
@@ -174,21 +180,32 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
-  breadcrumb.appendChild(li);
+    breadcrumb.appendChild(li);
 }
 
 /**
- * Get a parameter by name from page URL.
+ * Get a parameter by name from page URL. Standard function COPIED FROM INTERNET!
+
+ *1: The definition of a   getParameterByName function, receive need to query
+ * parameters of key, and then return to the parameters of value
  */
 getParameterByName = (name, url) => {
   if (!url)
+    //get the actual browse address
     url = window.location.href;
+    console.log("printing the url: " + url);
+    console.log("printing the name before: " + url);
   name = name.replace(/[\[\]]/g, '\\$&');
+  console.log("printing the name after: " + url);
   const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
     results = regex.exec(url);
   if (!results)
     return null;
   if (!results[2])
     return '';
+    console.log(results[2].replace(/\+/g, ' '));
+    //it returns the number of the id respected with the restaurant, for example:
+    //if the URL is: http://localhost:8000/restaurant.html?id=3
+    //it returns 3.
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }

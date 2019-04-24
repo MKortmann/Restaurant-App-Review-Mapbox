@@ -71,9 +71,20 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
 /**
  * Initialize leaflet map, called from HTML.
  */
+
+/* Important: unlesse set elsewhere, the value of self
+ * is window because JavaScript lets you access any
+ * property x of window as simple x, instead of
+ * window.x. Therefore, self is really window.self
+ * which is different to this.
+ * window.self === window;
+ *
+*/
+
 initMap = () => {
-  self.newMap = L.map('map', {
-        center: [40.722216, -73.987501],
+  //the line: ('map',...) makes the connection between the map and the DOM id element.
+  self.newMap = L.map('map', { //self.newMap === window.newMap
+        center: [40.722216, -73.987501], //lat, long
         zoom: 12,
         scrollWheelZoom: true
       });
@@ -86,6 +97,7 @@ initMap = () => {
     id: 'mapbox.streets'
   }).addTo(newMap);
 
+  //it will call two functions to reset and update the index HTML page
   updateRestaurants();
 }
 /* window.initMap = () => {
@@ -103,6 +115,10 @@ initMap = () => {
 
 /**
  * Update page and map for current restaurants.
+ * You see that it is using arrow functions!
+ * It allows: shorter syntax and NO BINDING OF THIS.
+ * It means that this keeps its meaning from its
+ * original context
  */
 updateRestaurants = () => {
   const cSelect = document.getElementById('cuisines-select');
@@ -113,11 +129,15 @@ updateRestaurants = () => {
 
   const cuisine = cSelect[cIndex].value;
   const neighborhood = nSelect[nIndex].value;
-
+  //after getting the DOM element, it will reset und update the restaurantes.
+  //before it get the list of restaurants based on selected DOM values of
+  //cuisine and neighborhood.
   DBHelper.fetchRestaurantByCuisineAndNeighborhood(cuisine, neighborhood, (error, restaurants) => {
     if (error) { // Got an error!
       console.error(error);
     } else {
+      //at this point you have the list of restaurants that you need that is
+      //updated at global variable needed for fillRestaurantsHTML
       resetRestaurants(restaurants);
       fillRestaurantsHTML();
     }
@@ -144,8 +164,12 @@ resetRestaurants = (restaurants) => {
 /**
  * Create all restaurants HTML and add them to the webpage.
  */
+ //the self.restaurants it was the listed updated before. it belongs to the
+ //global object in this case: window.
 fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
+  //Loop: get all the needs information of the restaurants as
+  //image, address, neighborhood and append it to the HTML.
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
   });
@@ -190,6 +214,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map
     const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
+    // Add clickable link to each marker
     marker.on("click", onClick);
     function onClick() {
       window.location.href = marker.options.url;
