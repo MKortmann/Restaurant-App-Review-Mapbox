@@ -97,7 +97,7 @@ nav h1 a {
 
 /* Add a color to all links inside the list */
 #breadcrumb li a {
-    color: #0275d8;
+    color: #0275d8; /*#0275d8; #252831*/
     text-decoration: none;
 }
 
@@ -186,7 +186,7 @@ nav h1 a {
   font-size: 11pt;
 }
 .box a {
-  background-color: orange;
+  background-color: #3397DB; /*#252831; /*orange;*/
   border-bottom: 3px solid #eee;
   color: #fff;
   display: inline-block;
@@ -196,6 +196,11 @@ nav h1 a {
   text-align: center;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+.box a:hover {
+	background-color: orange;
+	font-size: 11pt;
 }
 
 /* ====================== Restaurant Details ====================== */
