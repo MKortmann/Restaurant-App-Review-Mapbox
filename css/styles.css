@@ -254,7 +254,7 @@ nav h1 a {
   width: 50%;
 }
 #reviews-container {
-  padding: 30px 40px 80px;
+  padding: 30px 32px 80px;
 }
 #reviews-container h2 {
   color: #f58500;
@@ -302,7 +302,19 @@ nav h1 a {
 }
 
 /*This should be write in the end, if not, it does not work*/
-/*1080*/
+/*1600*/
+@media screen and (max-width: 1600px) {
+	#reviews-container {
+	  	padding: 5px 5px 5px 20px; /*top, right, bottom and left*/
+			text-align: center;
+	}
+
+	#restaurant-container {
+		padding: 80px 5px 5px 20px; /*top, right, bottom and left*/
+	}
+}
+
+/*1200*/
 @media screen and (max-width: 1200px) {
 	.box {
 	    max-width: 49%;
@@ -311,6 +323,7 @@ nav h1 a {
 	/*restaurant.html*/
 	.inside #map-container {
 		position: absolute;
+		margin: 5px -25px 5px 0px; /*top, right, bottom and left*/
 	  height: 20%;
 	  width: 100%;
 		top: 137px;
@@ -319,17 +332,48 @@ nav h1 a {
 	#breadcrumb {
 	   width: 100%;
 		 text-align: center;
+		 padding: 10px 1px 5px 5px; /*top, right, bottom and left*/
 	}
 
-	#restaurant-container {
-	  padding-top: 700px;
+	#restaurant-container  {
 	  width: 100%;
+		text-align: center;
+		padding: 700px 5px 5px 10px; /*top, right, bottom and left*/
 	}
 
-	#reviews-container {
+	#restaurant-cuisine {
+		margin-left:auto;
+	 	margin-right:auto;
+	}
+
+	#restaurant-hours  {
+		width: 50%;
+		margin-left:auto;
+	  margin-right:auto;
+	}
+
+	#reviews-container, #reviews-list {
 		width: 100%;
+		text-align: center;
+		margin-left:auto;
+	 	margin-right:auto;
+	}
+
+	#reviews-list {
+		padding: 5px 5px 5px 35px; /*top, right, bottom and left*/
 	}
 }
+
+/*1000*/
+@media screen and (max-width: 1000px) {
+	/*Restaurant html*/
+	#reviews-container li {
+	  	padding: 5px 5px 5px 4px; /*top, right, bottom and left*/
+
+	}
+}
+
+
 /*600px*/
 @media screen and (max-width: 600px) {/*it changes but only when the width of the browser reach 497px. Why?*/
 	nav h1 a {
@@ -362,6 +406,19 @@ nav h1 a {
 		font-size: 10pt;
 	}
 
+	#breadcrumb {
+	 	padding: 10px 35px 5px 5px; /*top, right, bottom and left*/
+	}
+
+	.inside #map-container {
+		margin: 5px -29px 5px 0px; /*top, right, bottom and left*/
+	}
+
+	#reviews-container li {
+			padding: 0px 0px 0px 0px; /*top, right, bottom and left*/
+			/* width: 76%; */
+	}
+
 }
 
 /*300px*/
@@ -386,6 +443,12 @@ nav h1 a {
 
 	.box {
 			border-style: none;
+	}
+
+	/*resturant.html*/
+	#reviews-container li {
+			padding: 0px 0px 0px 0px; /*top, right, bottom and left*/
+			/* width: 60%; */
 	}
 
 }
