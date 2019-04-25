@@ -4,6 +4,37 @@ let restaurants,
 var newMap
 var markers = []
 
+/*
+ * The ServiceWork occurs in 3 steps
+ * 1- register: this tells the browser where your service Worker
+ * JavaScript file lives.
+
+/*
+You can call register() every time a page loads without concern;
+the browser will figure out if the service worker is already registered or not
+and handle it accordingly. 
+*/
+
+/*
+ * 2- install
+ * 3- activate
+*/
+
+//Is ServiceWork supported? If yes, let's register.
+
+if("serviceWorker" in navigator) {
+  console.log("ServiceWorker is supported");
+  //callback function ES6
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("js/sw.js")
+      .then(reg => console.log("Service Worker Registered"))
+      //something went wrong?
+      .catch(err => console.log(`Service Worker: Erro: ${err}`));
+  });
+}
+
+
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -183,7 +214,7 @@ createRestaurantHTML = (restaurant) => {
 
   const element_div = document.createElement('div');
   element_div.className = "box";
-  
+
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
