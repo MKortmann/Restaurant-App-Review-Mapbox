@@ -12,11 +12,16 @@ var markers = []
 /*
 You can call register() every time a page loads without concern;
 the browser will figure out if the service worker is already registered or not
-and handle it accordingly. 
+and handle it accordingly.
 */
 
 /*
- * 2- install
+ * 2- install: at this point you define a callback for the install event and
+ * decide which files you want to cache.
+ So, inside our install callback, we define:
+  A- Open a cache.
+  B- Cache our files.
+  C- Confirm whether all the required assets are cached or not.
  * 3- activate
 */
 
