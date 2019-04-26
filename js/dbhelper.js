@@ -1,8 +1,8 @@
+"use strict";
 /**
  * Common database helper functions.
  */
 class DBHelper {
-
   /**
    * Database URL.
    * Change this to restaurants.json file location on your server.
@@ -12,7 +12,6 @@ class DBHelper {
     //it returns a json file in local host
     return `http://localhost:${port}/data/restaurants.json`;
   }
-
   /**
   A little about JSON file: it contains an easy format data structure
   and most important: STANDARD! that it is extremely easy to parse and
@@ -20,7 +19,6 @@ class DBHelper {
   It is the reason that we are using restaurants.json that is locally
   in our host machine
   */
-
   /**
    * Fetch all restaurants: static because this function is called only directly
    in this class and NOT ON INSTANCES OF THE CLASS. It is often used to create
@@ -61,7 +59,6 @@ class DBHelper {
     /*send method send the request*/
     xhr.send();
   }
-
   /**
    * Fetch a restaurant by its ID.
    * USED ONLY AT restaurant.html
@@ -89,7 +86,7 @@ class DBHelper {
       }
     });
   }
-
+  /*!!!!!!!!!WE DO NOT NEED THE CODE COMMENTED BELOW!!!!!!!*/
   /**
    * Fetch restaurants by a cuisine type with proper error handling.
    */
@@ -111,7 +108,6 @@ class DBHelper {
   //     }
   //   });
   // }
-
   /**
    * Fetch restaurants by a neighborhood with proper error handling.
    */
@@ -128,7 +124,6 @@ class DBHelper {
   //     }
   //   });
   // }
-
   /**
    * Fetch restaurants by a cuisine and a neighborhood with proper error handling.
    * We are, in fact, calling this function all the time instead to fetch only by
@@ -141,27 +136,22 @@ class DBHelper {
         callback(error, null);
       } else {
         let results = restaurants;
-        console.log("results in fetchRestaurantByCuisineAndNe.: " + results);
         if (cuisine != 'all') { // filter by cuisine
           results = results.filter(r => r.cuisine_type == cuisine);
-          console.log("cuisine results: " + results);
         }
         if (neighborhood != 'all') { // filter by neighborhood
           results = results.filter(r => r.neighborhood == neighborhood);
-          console.log("neighborhood results: " + results);
         }
         callback(null, results);
       }
     });
   }
-
   /**
    * Fetch all neighborhoods with proper error handling:
    * FETCH NEIGHBORHOODS AT DOM!!!!
    * UPDATING HERE!!!
    */
   static fetchNeighborhoods(callback) {
-    console.log("We are at: fetchNeighborhoods");
     // Fetch all restaurants
     DBHelper.fetchRestaurants((error, restaurants) => {
       if (error) {
@@ -181,7 +171,6 @@ class DBHelper {
       }
     });
   }
-
   /**
    * Fetch all cuisines with proper error handling.
    * USED AT THE DOM!!!
@@ -200,18 +189,15 @@ class DBHelper {
       }
     });
   }
-
   /**
    * Restaurant page URL. Homepage DOM: link the url address:
    * ex.: http://localhost:8000/restaurant.html?id=3
    * to the marker in the map!
    */
   static urlForRestaurant(restaurant) {
-    console.log(`./restaurant.html?id=${restaurant.id}`);
     //it returns for example: ./restaurant.html?id=1
     return (`./restaurant.html?id=${restaurant.id}`);
   }
-
   /**
    * Restaurant image URL. Homepage DOM: images!
    */
@@ -219,7 +205,6 @@ class DBHelper {
     //it returns for example: /img/7.jpg
     return (`/img/${restaurant.photograph}`);
   }
-
   /**
    * Map marker for a restaurant.
    */
@@ -234,15 +219,4 @@ class DBHelper {
       marker.addTo(newMap);
     return marker;
   }
-  /* static mapMarkerForRestaurant(restaurant, map) {
-    const marker = new google.maps.Marker({
-      position: restaurant.latlng,
-      title: restaurant.name,
-      url: DBHelper.urlForRestaurant(restaurant),
-      map: map,
-      animation: google.maps.Animation.DROP}
-    );
-    return marker;
-  } */
-
 }

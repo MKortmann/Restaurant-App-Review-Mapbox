@@ -1,17 +1,16 @@
+"use strict";
 /**Support file to the restaurant.html*/
-
-let restaurant;
+/*Here we declare variables/functions already that are being used below*/
+let restaurant, initMap, fetchRestaurantFromURL, fillRestaurantHTML,
+getParameterByName, fillRestaurantHoursHTML, fillReviewsHTML, createReviewHTML,
+fillBreadcrumb;
 var newMap;
-
-
-
 /**
  * Initialize map as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
   initMap();
 });
-
 /**
  * Initialize leaflet map
  */
@@ -39,23 +38,6 @@ initMap = () => {
     }
   });
 }
-
-/* window.initMap = () => {
-  fetchRestaurantFromURL((error, restaurant) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      self.map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: restaurant.latlng,
-        scrollwheel: false
-      });
-      fillBreadcrumb();
-      DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
-    }
-  });
-} */
-
 /**
  * Get current restaurant from page URL.
  */
@@ -81,7 +63,6 @@ fetchRestaurantFromURL = (callback) => {
     });
   }
 }
-
 /**
  * Create restaurant HTML and add it to the webpage
  */
@@ -106,7 +87,6 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   // fill reviews
   fillReviewsHTML();
 }
-
 /**
  * Create restaurant operating hours HTML table and add it to the webpage.
  */
@@ -114,7 +94,6 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
   const hours = document.getElementById('restaurant-hours');
   const tbody = document.createElement("tbody");
   for (let key in operatingHours) {
-
 
     const row = document.createElement('tr');
 
@@ -125,13 +104,10 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     const time = document.createElement('td');
     time.innerHTML = operatingHours[key];
     row.appendChild(time);
-
     tbody.appendChild(row);
-
   }
     hours.appendChild(tbody);
 }
-
 /**
  * Create all reviews HTML and add them to the webpage.
  */
@@ -153,7 +129,6 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
   });
   container.appendChild(ul);
 }
-
 /**
  * Create review HTML and add it to the webpage.
  */
@@ -168,16 +143,8 @@ createReviewHTML = (review) => {
   const dateAndRating = document.createElement('h3');
   dateAndRating.innerHTML = review.date + " - " +`Rating: ${review.rating}`;
   span.appendChild(dateAndRating);
-  // li.appendChild(date);
-  //
-  // const rating = document.createElement('h3');
-
   span.appendChild(dateAndRating);
-  // rating.appendChild(span);
-  // li.appendChild(rating);
   li.appendChild(span);
-
-
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;
@@ -185,7 +152,6 @@ createReviewHTML = (review) => {
 
   return li;
 }
-
 /**
  * Add restaurant name to the breadcrumb navigation menu
  */
@@ -195,10 +161,8 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
   li.innerHTML = restaurant.name;
     breadcrumb.appendChild(li);
 }
-
 /**
  * Get a parameter by name from page URL. Standard function COPIED FROM INTERNET!
-
  *1: The definition of a   getParameterByName function, receive need to query
  * parameters of key, and then return to the parameters of value
  */
@@ -206,17 +170,14 @@ getParameterByName = (name, url) => {
   if (!url)
     //get the actual browse address
     url = window.location.href;
-    console.log("printing the url: " + url);
-    console.log("printing the name before: " + url);
   name = name.replace(/[\[\]]/g, '\\$&');
-  console.log("printing the name after: " + url);
+
   const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`),
     results = regex.exec(url);
   if (!results)
     return null;
   if (!results[2])
     return '';
-    console.log(results[2].replace(/\+/g, ' '));
     //it returns the number of the id respected with the restaurant, for example:
     //if the URL is: http://localhost:8000/restaurant.html?id=3
     //it returns 3.

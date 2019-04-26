@@ -1,21 +1,26 @@
-let restaurants,
-  neighborhoods,
-  cuisines
-var newMap
-var markers = []
+"use strict";
+/*Declaring variables and functions that will be used! necessary
+because we want to call the function in an easy order making it
+easier to understand the code*/
+let restaurants, neighborhoods, cuisines, fetchNeighborhoods,
+  initMap, fillNeighborhoodsHTML, fetchCuisines, fillCuisinesHTML,
+  updateRestaurants, resetRestaurants, fillRestaurantsHTML,
+  createRestaurantHTML, addMarkersToMap;
+var newMap;
+var markers = [];
 
+/*FIRST STEP: declaring the service work!*
 /*
- * The ServiceWork occurs in 3/4 steps
+ * The ServiceWork occurs in 4 steps
  * 1- register: this tells the browser where your service Worker
- * JavaScript file lives.
-
+ * JavaScript file lives. The register is done in this file:
+ * main.js.
 /*
 You can call register() every time a page loads without concern;
 the browser will figure out if the service worker is already registered or not
 and handle it accordingly.
 */
-
-/*
+/* The below steps of ServiceWork are done in the file sw.js at root folder!
  * 2- install: at this point you define a callback for the install event and
  * decide which files you want to cache.
  So, inside our install callback, we define:
@@ -24,14 +29,12 @@ and handle it accordingly.
   C- Confirm whether all the required assets are cached or not.
  * 3- activate
  A- remove unwanted caches.
-
  4- Fetch add fetch event to be able to restore the data if you is offline
 */
 
-//Is ServiceWork supported? If yes, let's register.
+//First STEP: let's check if is supported and if yes, let's register it!
 
 if("serviceWorker" in navigator) {
-  console.log("ServiceWorker is supported");
   //callback function ES6
   window.addEventListener("load", () => {
     navigator.serviceWorker
@@ -41,8 +44,7 @@ if("serviceWorker" in navigator) {
       .catch(err => console.log(`Service Worker: Erro: ${err}`));
   });
 }
-
-
+/*NOW IMPLEMENT THE HOLE FUNCTIONALITY !
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -65,7 +67,6 @@ fetchNeighborhoods = () => {
     }
   });
 }
-
 /**
  * Set neighborhoods HTML.
  */
@@ -78,7 +79,6 @@ fillNeighborhoodsHTML = (neighborhoods = self.neighborhoods) => {
     select.append(option);
   });
 }
-
 /**
  * Fetch all cuisines and set their HTML.
  */
@@ -92,7 +92,6 @@ fetchCuisines = () => {
     }
   });
 }
-
 /**
  * Set cuisines HTML.
  */
@@ -106,12 +105,10 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
     select.append(option);
   });
 }
-
 /**
  * Initialize leaflet map, called from HTML.
  */
-
-/* Important: unlesse set elsewhere, the value of self
+/* Important: unless set elsewhere, the value of self
  * is window because JavaScript lets you access any
  * property x of window as simple x, instead of
  * window.x. Therefore, self is really window.self
@@ -119,7 +116,6 @@ fillCuisinesHTML = (cuisines = self.cuisines) => {
  * window.self === window;
  *
 */
-
 initMap = () => {
   //the line: ('map',...) makes the connection between the map and the DOM id element.
   self.newMap = L.map('map', { //self.newMap === window.newMap
@@ -139,22 +135,9 @@ initMap = () => {
   //it will call two functions to reset and update the index HTML page
   updateRestaurants();
 }
-/* window.initMap = () => {
-  let loc = {
-    lat: 40.722216,
-    lng: -73.987501
-  };
-  self.map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: loc,
-    scrollwheel: false
-  });
-  updateRestaurants();
-} */
-
 /**
  * Update page and map for current restaurants.
- * You see that it is using arrow functions!
+ * You see that it is using arrow functions! ES6!
  * It allows: shorter syntax and NO BINDING OF THIS.
  * It means that this keeps its meaning from its
  * original context
@@ -182,7 +165,6 @@ updateRestaurants = () => {
     }
   })
 }
-
 /**
  * Clear current restaurants, their HTML and remove their map markers.
  */
@@ -191,7 +173,6 @@ resetRestaurants = (restaurants) => {
   self.restaurants = [];
   const ul = document.getElementById('restaurants-list');
   ul.innerHTML = '';
-
   // Remove all map markers
   if (self.markers) {
     self.markers.forEach(marker => marker.remove());
@@ -199,7 +180,6 @@ resetRestaurants = (restaurants) => {
   self.markers = [];
   self.restaurants = restaurants;
 }
-
 /**
  * Create all restaurants HTML and add them to the webpage.
  */
@@ -214,7 +194,6 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   });
   addMarkersToMap();
 }
-
 /**
  * Create restaurant HTML.
  */
@@ -249,7 +228,6 @@ createRestaurantHTML = (restaurant) => {
 
   return element_div
 }
-
 /**
  * Add markers for current restaurants to the map.
  */
@@ -264,15 +242,4 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     }
     self.markers.push(marker);
   });
-
 }
-/* addMarkersToMap = (restaurants = self.restaurants) => {
-  restaurants.forEach(restaurant => {
-    // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.map);
-    google.maps.event.addListener(marker, 'click', () => {
-      window.location.href = marker.url
-    });
-    self.markers.push(marker);
-  });
-} */
