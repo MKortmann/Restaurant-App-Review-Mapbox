@@ -5,7 +5,7 @@ var newMap
 var markers = []
 
 /*
- * The ServiceWork occurs in 3 steps
+ * The ServiceWork occurs in 3/4 steps
  * 1- register: this tells the browser where your service Worker
  * JavaScript file lives.
 
@@ -22,10 +22,10 @@ and handle it accordingly.
   A- Open a cache.
   B- Cache our files.
   C- Confirm whether all the required assets are cached or not.
- * 3- activate:
+ * 3- activate
  A- remove unwanted caches.
 
- -> add fetch event to be able to restore the data if you is offline
+ 4- Fetch add fetch event to be able to restore the data if you is offline
 */
 
 //Is ServiceWork supported? If yes, let's register.
@@ -35,7 +35,7 @@ if("serviceWorker" in navigator) {
   //callback function ES6
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("js/sw.js")
+      .register("/sw.js")
       .then(reg => console.log("Service Worker Registered"))
       //something went wrong?
       .catch(err => console.log(`Service Worker: Erro: ${err}`));
@@ -225,6 +225,8 @@ createRestaurantHTML = (restaurant) => {
 
   const image = document.createElement('img');
   image.className = 'restaurant-img';
+  /*Alt as requested if the image is needed!*/
+  image.alt = restaurant.id + ".jpg";
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
   element_div.append(image);
 
@@ -243,7 +245,7 @@ createRestaurantHTML = (restaurant) => {
   const more = document.createElement('a');
   more.innerHTML = 'View Details';
   more.href = DBHelper.urlForRestaurant(restaurant);
-  element_div.append(more)
+  element_div.append(more);
 
   return element_div
 }

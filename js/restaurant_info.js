@@ -112,7 +112,10 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
  */
 fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => {
   const hours = document.getElementById('restaurant-hours');
+  const tbody = document.createElement("tbody");
   for (let key in operatingHours) {
+
+
     const row = document.createElement('tr');
 
     const day = document.createElement('td');
@@ -123,8 +126,10 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
     time.innerHTML = operatingHours[key];
     row.appendChild(time);
 
-    hours.appendChild(row);
+    tbody.appendChild(row);
+
   }
+    hours.appendChild(tbody);
 }
 
 /**
@@ -154,17 +159,25 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
   const li = document.createElement('li');
-  const name = document.createElement('p');
+  const name = document.createElement('h2');
   name.innerHTML = review.name;
   li.appendChild(name);
 
-  const date = document.createElement('p');
-  date.innerHTML = review.date;
-  li.appendChild(date);
+  const span = document.createElement("span");
 
-  const rating = document.createElement('p');
-  rating.innerHTML = `Rating: ${review.rating}`;
-  li.appendChild(rating);
+  const dateAndRating = document.createElement('h3');
+  dateAndRating.innerHTML = review.date + " - " +`Rating: ${review.rating}`;
+  span.appendChild(dateAndRating);
+  // li.appendChild(date);
+  //
+  // const rating = document.createElement('h3');
+
+  span.appendChild(dateAndRating);
+  // rating.appendChild(span);
+  // li.appendChild(rating);
+  li.appendChild(span);
+
+
 
   const comments = document.createElement('p');
   comments.innerHTML = review.comments;

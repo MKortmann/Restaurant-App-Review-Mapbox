@@ -5,7 +5,7 @@ html {
 }
 body,td,th,p{
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 10pt;
+	font-size: 14pt;
 	color: #333;
 	line-height: 1.5;
 }
@@ -45,7 +45,8 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 }
 #footer {
   background-color: #444;
-  color: #aaa;
+  /* color: #aaa; */
+	color: white;
   font-size: 8pt;
   letter-spacing: 1px;
 	padding: 25px 25px 25px 10px; /*top, right, bottom and left*/
@@ -79,7 +80,7 @@ nav h1 a {
     background-color: #eee;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 130px);
+    width: calc(50% - 121px);
 }
 
 /* Display list items side by side */
@@ -234,7 +235,7 @@ nav h1 a {
   font-size: 20pt;
   font-weight: 200;
   letter-spacing: 0;
-  margin: 15px 0 30px;
+  margin: 15px 0 15px;
   text-transform: uppercase;
   line-height: 1.1;
 }
@@ -242,9 +243,20 @@ nav h1 a {
 	width: 90%;
 }
 #restaurant-address {
-  font-size: 12pt;
+  font-size: 16pt;
   margin: 10px 0px;
+	text-align: center;
+	margin-left:auto;
+	margin-right:auto;
 }
+
+#restaurant-hours {
+  color: black;
+	width: 65%;
+	margin-left:auto;
+	margin-right:auto;
+}
+
 #restaurant-cuisine {
   background-color: #333;
   color: #ddd;
@@ -267,7 +279,8 @@ nav h1 a {
   padding: 30px 32px 80px;
 }
 #reviews-container h2 {
-  color: #f58500;
+  /* color: #f58500; */
+	color: black;
   font-size: 24pt;
   font-weight: 300;
   letter-spacing: -1px;
@@ -279,22 +292,36 @@ nav h1 a {
 }
 #reviews-list li {
   background-color: #fff;
-  border: 2px solid #f3f3f3;
+  /* border: 2px solid #f3f3f3; */
+	border: 2px solid #252831; /*#3397DB;*/
   display: block;
   list-style-type: none;
-  margin: 0 0 0px;
+  margin: 0 0 5px;
   overflow: hidden;
   padding: 0 20px 20px;
   position: relative;
   width: 85%;
 }
-/* #reviews-list li p {
-  margin: 0 0 0px;
-} */
-#restaurant-hours td {
-  color: #666;
+
+#reviews-list p {
+ margin: 0 0 0px;
+ font-size: 12pt;
+ text-align: justify;;
+
+}
+#reviews-list h2 {
+	color: white;
+	background-color: #3397DB;
 }
 
+/*Improving the table:*/
+tbody tr:nth-child(even) {
+  background-color: white;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #3397DB;
+}
 /* WEB RESPONSIVE
  * <<COLUMN DROP>>
  */
@@ -315,18 +342,21 @@ nav h1 a {
 /*1600*/
 @media screen and (max-width: 1600px) {
 	#restaurant-container {
-		padding: 80px 5px 5px 28px; /*top, right, bottom and left*/
+		padding: 130px 5px 5px 28px; /*top, right, bottom and left*/
 	}
 	#reviews-container {
 	  	padding: 5px 0px 5px 0px; /*top, right, bottom and left*/
 			text-align: center;
 	}
+	#reviews-list {
+		padding: 5px 5px 5px 50px; /*top, right, bottom and left*/
+	}
 }
 
 /*1500*/
-@media screen and (max-width: 1600px) {
+@media screen and (max-width: 1500px) {
 	#restaurant-container {
-		padding: 80px 5px 5px 22px; /*top, right, bottom and left*/
+		padding: 130px 5px 5px 22px; /*top, right, bottom and left*/
 	}
 	#reviews-container {
 	  	padding: 5px 0px 5px 0px; /*top, right, bottom and left*/
@@ -340,7 +370,7 @@ nav h1 a {
 /*1350*/
 @media screen and (max-width: 1350px) {
 	#restaurant-container {
-		padding: 80px 5px 5px 22px; /*top, right, bottom and left*/
+		padding: 130px 5px 5px 22px; /*top, right, bottom and left*/
 	}
 	#reviews-list {
 		padding: 5px 5px 5px 34px; /*top, right, bottom and left*/
@@ -354,6 +384,10 @@ nav h1 a {
 	}
 
 	/*restaurant.html*/
+	#restaurant-hours {
+		min-width: 80%;
+	}
+
 	#restaurant-container, #reviews-container {
 		min-width: 100%;
 	}
@@ -389,44 +423,35 @@ nav h1 a {
 		padding: 700px 5px 5px 2px; /*top, right, bottom and left*/
 	}
 	#reviews-list {
-		padding: 5px 5px 5px 50px; /*top, right, bottom and left*/
-		min-width: 100%;
+		padding: 5px 5px 5px 90px; /*top, right, bottom and left*/
 	}
 }
 
 /*1025*/
 @media screen and (max-width: 1025px) {
 	/*Restaurant html*/
-	/* #reviews-container li {
-	  	padding: 2px 5px 5px 4px; /*top, right, bottom and left
-	} */
-
 	#reviews-list  {
-			padding: 0px 0px 0px 55px; /*top, right, bottom and left*/
-			/* width: 76%; */
+			padding: 0px 0px 0px 60px; /*top, right, bottom and left*/
 	}
-
 }
 /*880px*/
 @media screen and (max-width: 880px) {
 	/*Restaurant html*/
 	#restaurant-container  {
-		padding: 610px 5px 5px 10px; /*top, right, bottom and left*/
+		padding: 680px 5px 5px 10px; /*top, right, bottom and left*/
 	}
 	#reviews-list  {
-			padding: 0px 0px 0px 36px; /*top, right, bottom and left*/
-			/* width: 76%; */
+			padding: 0px 0px 0px 57px; /*top, right, bottom and left*/
 	}
 }
 /*700*/
 @media screen and (max-width: 700px) {
 	/*Restaurant html*/
 	#restaurant-container  {
-		padding: 610px 5px 5px 0px; /*top, right, bottom and left*/
+		padding: 671px 5px 5px 0px; /*top, right, bottom and left*/
 	}
 	#reviews-list  {
 			padding: 0px 0px 0px 31px; /*top, right, bottom and left*/
-			/* width: 76%; */
 	}
 }
 
@@ -458,6 +483,10 @@ nav h1 a {
 	}
 
 	/*Restaurant.html*/
+	#restaurant-hours {
+		min-width: 90%;
+	}
+
 	#breadcrumb li {
 		font-size: 10pt;
 	}
@@ -467,7 +496,7 @@ nav h1 a {
 	}
 
 	.inside #map-container {
-		margin: 5px -29px 5px 0px; /*top, right, bottom and left*/
+		margin: 5px -20px 5px 0px; /*top, right, bottom and left*/
 	}
 
 	#reviews-list  {
@@ -480,7 +509,14 @@ nav h1 a {
 @media screen and (max-width: 500px) {
 	/*Restaurant html*/
 	#restaurant-container  {
-		padding: 623px 5px 5px 7px; /*top, right, bottom and left*/
+		padding: 715px 5px 5px 7px; /*top, right, bottom and left*/
+	}
+	#restaurant-hours {
+		min-width: 99%;
+	}
+
+	#restaurant-hours td {
+		font-size: 11pt;
 	}
 	#reviews-list  {
 			padding: 0px 0px 0px 7px; /*top, right, bottom and left*/
@@ -492,7 +528,7 @@ nav h1 a {
 @media screen and (max-width: 400px) {
 	/*Restaurant html*/
 	#restaurant-container  {
-		padding: 646px 5px 5px 0px; /*top, right, bottom and left*/
+		padding: 680px 5px 5px 0px; /*top, right, bottom and left*/
 	}
 	#reviews-list  {
 			padding: 0px 0px 0px 5px; /*top, right, bottom and left*/
@@ -526,10 +562,20 @@ nav h1 a {
 
 	/*resturant.html*/
 	#restaurant-container  {
-		padding: 688px 0px 5px 0px; /*top, right, bottom and left*/
+		padding: 805px 0px 5px 0px; /*top, right, bottom and left*/
 	}
 
 	#reviews-list  {
 			padding: 0px 0px 0px 0px; /*top, right, bottom and left*/
 	}
+
+	#reviews-list li {
+	  background-color: #fff;
+	  /* border: 2px solid #f3f3f3; */
+		border: none;
+	  padding: 0 0px 0px;
+	  width: 98%;
+	}
+
+
 }
