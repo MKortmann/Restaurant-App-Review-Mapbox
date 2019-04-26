@@ -22,7 +22,10 @@ and handle it accordingly.
   A- Open a cache.
   B- Cache our files.
   C- Confirm whether all the required assets are cached or not.
- * 3- activate
+ * 3- activate:
+ A- remove unwanted caches.
+
+ -> add fetch event to be able to restore the data if you is offline
 */
 
 //Is ServiceWork supported? If yes, let's register.
