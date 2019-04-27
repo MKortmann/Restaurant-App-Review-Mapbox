@@ -34,6 +34,8 @@ initMap = () => {
       document.querySelector(".leaflet-control-attribution").innerHTML = "";
       fillBreadcrumb();
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
+
+      document.querySelector(".leaflet-interactive").tabIndex = -1;
     }
   });
 }

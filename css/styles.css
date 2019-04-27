@@ -293,10 +293,17 @@ nav h1 a {
   padding: 140px 40px 30px;
   width: 50%;
 }
-/* header:focus {
-	background-color: red;
-	border-width: 10px 10px 10px 10px;
-} */
+#reviews-container {
+	width: 44%;
+}
+#breadcrumb a:focus,
+#restaurant-name:focus,
+#reviews-container:focus,
+#restaurant-hours:focus {
+	border: 3px solid red;
+	/* background-color: red; */
+}
+
 #reviews-container {
   padding: 30px 32px 80px;
 }
