@@ -217,6 +217,9 @@ class DBHelper {
       url: DBHelper.urlForRestaurant(restaurant)
       })
       marker.addTo(newMap);
+      /*disabling the map tabindex: I do not think that it make sense to let
+      here, it is the reason I am disabling it.*/
+      // document.querySelector("#map").tabIndex = -1;
     return marker;
   }
 }

@@ -126,12 +126,11 @@ initMap = () => {
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
     mapboxToken: 'pk.eyJ1IjoibXZtcyIsImEiOiJjanVteHFybWgwdXo2NDNzOHRwcnNkN2JtIn0.SMPiuoeVXC2D3pesZn29lQ',
     maxZoom: 18,
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
-      '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-      'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    // attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+    //   '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+    //   'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(newMap);
-
   //it will call two functions to reset and update the index HTML page
   updateRestaurants();
 }
@@ -243,3 +242,21 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     self.markers.push(marker);
   });
 }
+
+/*Waiting the page to load: trying to improve the user experience!*/
+window.addEventListener("load", function() {
+/*disabling the map tabindex for markers! It not make sense to have
+to tab over 10 markers!*/
+document.querySelectorAll(".leaflet-interactive").forEach(function(val) {
+    val.tabIndex = -1;
+  });
+/*We could disable the map, but in this case better not.*/
+// document.querySelector("#map").tabIndex = -1;
+/*Removing tab-index for map label attribution*/
+document.querySelector(".leaflet-control-attribution").tabIndex = -1;
+
+/*Change the written below:*/
+const legend =  "OpenStreetMap, CC-BY-SA, Mapbox, Marcelo Kortmann";
+document.querySelector(".leaflet-control-attribution").innerHTML = "";
+
+});
