@@ -131,6 +131,7 @@ initMap = () => {
     //   'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(newMap);
+  document.querySelector(".leaflet-control-attribution").innerHTML = "";
   //it will call two functions to reset and update the index HTML page
   updateRestaurants();
 }
@@ -241,22 +242,27 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     }
     self.markers.push(marker);
   });
+
+  document.querySelectorAll(".leaflet-interactive").forEach(function(val) {
+      val.tabIndex = -1;
+    });
+
 }
 
-/*Waiting the page to load: trying to improve the user experience!*/
-window.addEventListener("load", function() {
-/*disabling the map tabindex for markers! It not make sense to have
-to tab over 10 markers!*/
-document.querySelectorAll(".leaflet-interactive").forEach(function(val) {
-    val.tabIndex = -1;
-  });
-/*We could disable the map, but in this case better not.*/
-// document.querySelector("#map").tabIndex = -1;
-/*Removing tab-index for map label attribution*/
-document.querySelector(".leaflet-control-attribution").tabIndex = -1;
-
-/*Change the written below:*/
-const legend =  "OpenStreetMap, CC-BY-SA, Mapbox, Marcelo Kortmann";
-document.querySelector(".leaflet-control-attribution").innerHTML = "";
-
-});
+// /*Waiting the page to load: trying to improve the user experience!*/
+// window.addEventListener("load", function() {
+// /*disabling the map tabindex for markers! It not make sense to have
+// to tab over 10 markers!*/
+// // document.querySelectorAll(".leaflet-interactive").forEach(function(val) {
+// //     val.tabIndex = -1;
+// //   });
+// // /*We could disable the map, but in this case better not.*/
+// // // document.querySelector("#map").tabIndex = -1;
+// // /*Removing tab-index for map label attribution*/
+// // document.querySelector(".leaflet-control-attribution").tabIndex = -1;
+//
+// // /*Change the written below:*/
+// // const legend =  "OpenStreetMap, CC-BY-SA, Mapbox, Marcelo Kortmann";
+// // document.querySelector(".leaflet-control-attribution").innerHTML = "";
+//
+// });

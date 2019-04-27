@@ -18,15 +18,19 @@
 </head>
 
 <body class="inside">
+  <!-- <a href="#reviews-container" class="skip-link">Skip to reviews content</a> -->
   <!-- Beginning header -->
-  <header>
+  <header role="banner">
     <!-- Beginning nav -->
-    <nav>
-      <h1><a href="/" tabindex="0">Restaurant Reviews</a></h1>
+    <nav role="navigation">
+      <h1><a href="/">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
     <div id="breadcrumb">
       <li><a href="/">Home</a></li>
+      <li><a href="#restaurant-hours" >Timetable</a></li>
+      <li><a href="#reviews-container" >Reviews</a></li>
+
     </div>
     <!-- End breadcrumb -->
     <!-- End nav -->
@@ -34,7 +38,7 @@
   <!-- End header -->
 
   <!-- Beginning main -->
-  <main id="maincontent">
+  <main id="maincontent" role="main">
     <!-- Beginning map -->
     <section id="map-container">
       <div id="map"></div>
@@ -42,16 +46,16 @@
     <!-- End map -->
     <!-- Beginning restaurant -->
     <section id="restaurant-container" >
-        <h1 id="restaurant-name" tabindex="0"></h1>
+        <h1 id="restaurant-name"></h1>
         <img id="restaurant-img">
         <p id="restaurant-cuisine"></p>
         <p id="restaurant-address"></p>
-        <table id="restaurant-hours" tabindex="0"></table>
+        <table id="restaurant-hours"></table>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
-    <section id="reviews-container" tabindex="0">
-      <div id="reviews-list" ></div>
+    <section id="reviews-container">
+      <div id="reviews-list" role="article"></div>
     </section>
     <!-- End reviews -->
   </main>
@@ -59,7 +63,7 @@
 
   <!-- Beginning footer -->
   <br><br><br>
-  <footer id="footer">
+  <footer id="footer" role="contentinfo">
     Copyright (c) 2019 <a href="/" tabindex="-1"><strong>Restaurant Reviews</strong></a> All Rights Reserved.
   </footer>
   <!-- End footer -->
