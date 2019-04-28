@@ -226,14 +226,13 @@ createRestaurantHTML = (restaurant) => {
   address.innerHTML = restaurant.address;
   element_div.append(address);
 
-  const more = document.createElement('button');
+  const more = document.createElement('a');
   more.innerHTML = 'View Details'; // + restaurant.name;
   more.setAttribute("aria-label", "Click here to view more details of the restaurant" + restaurant.name);
   //Not really necessary because of the link a.
   more.setAttribute("tabindex", 0);
-  more.setAttribute("class", "aButton");
-
   more.href = DBHelper.urlForRestaurant(restaurant);
+
   element_div.append(more);
 
   return element_div

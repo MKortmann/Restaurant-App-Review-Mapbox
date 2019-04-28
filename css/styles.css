@@ -6,9 +6,7 @@
 #cuisines-select:focus,
 #cuisines-select:hover,
 .leaflet-control-zoom-in:focus,
-.leaflet-control-zoom-out:focus,
-.box a:focus
- {
+.leaflet-control-zoom-out:focus {
 	border: 3px solid red;
 	background-color: red;
 }
@@ -233,7 +231,7 @@ div .box {
 .box p {
 	padding-bottom: 5px; /*top, right, bottom and left*/
 }
-.box button {
+.box a {
 	border-radius: 25px;
 	border: solid black;
   background-color: #3397DB; /*#34495E; /*#3397DB; /*#252831; /*orange;*/
@@ -252,28 +250,26 @@ div .box {
 
 /*creates a pseudo-element that is the first child of the selected element
 Used to add cosmetic content to an element*/
-button:before {
+a:before {
 	content:'';
 	position: absolute;
-  height: 43px;
+  height: 50px;
 	top: 0px;
 	left: 0px;
 	width: 0px;
-	/* background: rgba(255,0,0,0.4); */
-  background-image: linear-gradient(to right, rgba(255,255,255,0.4), rgba(255,0,0,0.6));
+  background-image: linear-gradient(to right, rgba(255,255,255,0.3), rgba(255,0,0,0.5));
 	border-radius: 25px;
 	transition: all 1s ease;
   cursor: pointer;
 }
 
-button:hover:before,
-button:focus:before {
+.box a:hover:before,
+.box a:focus:before {
 	width: 100%;
  }
 
 .box a:hover,
-.box button:hover,
-.box button:focus {
+.box a:focus {
 	border: solid 4px red;
 	font-size: 16pt;
 }
