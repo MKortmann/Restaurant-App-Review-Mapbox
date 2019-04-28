@@ -17,11 +17,13 @@
 	left: 0;
 	padding: 8px; /*top, right, bottom and left*/
 	z-index: 100;
-	font-size: 20pt;
+	font-size: 30pt;
+
 }
 
 .skip-link:focus {
 	top: 0;
+  color: red;
 }
 
 html {
@@ -274,6 +276,11 @@ a:before {
 	font-size: 16pt;
 }
 
+.container:focus {
+  background-color: red;
+  border: solid 10px red;
+}
+
 /* ====================== Restaurant Details ====================== */
 .inside header {
   position: fixed;
@@ -372,6 +379,7 @@ a:before {
 #reviews-list {
   margin: 0;
   padding: 0; /*top, right, bottom and left*/
+  padding: 0px 0px 50px 84px; /*top, right, bottom and left*/
 }
 #reviews-list li {
   background-color: #fff;
