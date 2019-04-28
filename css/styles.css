@@ -32,12 +32,13 @@ html {
 body,td,th,p{
 	font-family: Arial, Helvetica, sans-serif;
 	font-size: 14pt;
-	color: #333;
+	/* color: #333; */
 	line-height: 1.5;
   text-align: center;
 }
 th {
-  background-color: lightsteelblue;
+  background-color: #444;
+  color: white;
 }
 table {
   padding: 10px 10px 10px 10px;
@@ -81,7 +82,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
   min-height: 100%;
 }
 #footer {
-  background-color: #444;
+  background-color: #252831; /* #444;*/
   /* color: #aaa; */
 	color: white;
   font-size: 8pt;
@@ -97,7 +98,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 nav {
   width: 100%;
   height: 80px;
-  background-color: #252831;
+  background-color: #252831; /*#444; /*#252831;*/
   text-align:center;
 }
 nav h1 {
@@ -360,7 +361,7 @@ a:before {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 5px 0 5px; /*top, right, bottom and left*/
+  padding: 140px 0px 0 0px; /*top, right, bottom and left*/
   width: 50%;
 }
 
@@ -458,11 +459,6 @@ tbody tr:nth-child(odd) {
 	#restaurant-container {
 		padding: 130px 5px 5px 28px; /*top, right, bottom and left*/
 	}
-	#reviews-container {
-	  	padding: 5px 0px 5px 0px; /*top, right, bottom and left*/
-			text-align: center;
-	}
-
 }
 
 /*1500*/
@@ -470,11 +466,6 @@ tbody tr:nth-child(odd) {
 	#restaurant-container {
 		padding: 130px 5px 5px 22px; /*top, right, bottom and left*/
 	}
-	#reviews-container {
-	  	padding: 5px 0px 5px 0px; /*top, right, bottom and left*/
-			text-align: center;
-	}
-
 }
 
 /*1350*/
@@ -497,7 +488,7 @@ tbody tr:nth-child(odd) {
 		min-width: 80%;
 	}
 
-	#restaurant-container, #reviews-container {
+	 #restaurant-container, #reviews-container {
 		min-width: 100%;
 	}
 
@@ -529,7 +520,7 @@ tbody tr:nth-child(odd) {
 	#restaurant-container  {
 	  width: 100%;
 		text-align: center;
-		padding: 700px 5px 5px 2px; /*top, right, bottom and left*/
+		padding: 730px 5px 5px 2px; /*top, right, bottom and left*/
 	}
 
 }
@@ -538,15 +529,7 @@ tbody tr:nth-child(odd) {
 @media screen and (max-width: 880px) {
 	/*Restaurant html*/
 	#restaurant-container  {
-		padding: 680px 5px 5px 0px; /*top, right, bottom and left*/
-	}
-
-}
-/*700*/
-@media screen and (max-width: 700px) {
-	/*Restaurant html*/
-	#restaurant-container  {
-		padding: 671px 5px 5px 0px; /*top, right, bottom and left*/
+		padding: 715px 5px 5px 0px; /*top, right, bottom and left*/
 	}
 
 }
@@ -595,34 +578,28 @@ tbody tr:nth-child(odd) {
 		margin: 5px -20px 5px 0px; /*top, right, bottom and left*/
 	}
 
-}
+  /*Restaurant html*/
+  #restaurant-container  {
+    padding: 770px 5px 5px 0px; /*top, right, bottom and left*/
+  }
 
-/*500*/
-@media screen and (max-width: 500px) {
-	/*Restaurant html*/
-	#restaurant-container  {
-		padding: 715px 5px 5px 5px; /*top, right, bottom and left*/
-	}
-	#restaurant-hours {
-		min-width: 95%;
-	}
-
-	#restaurant-hours td {
-		font-size: 11pt;
-	}
 }
 
 /*400*/
 @media screen and (max-width: 400px) {
 	/*Restaurant html*/
 	#restaurant-container  {
-		padding: 700px 5px 5px 0px; /*top, right, bottom and left*/
+		padding: 790px 5px 5px 0px; /*top, right, bottom and left*/
 	}
 
 	#restaurants-list p {
 	  margin: 0;
 	  font-size: 11pt;
 	}
+
+  #restaurant-hours td {
+    font-size: 11pt;
+  }
 }
 
 /*300px*/
@@ -650,7 +627,7 @@ tbody tr:nth-child(odd) {
 	}
 
 	/*resturant.html*/
-	#restaurant-container  {
+	 #restaurant-container  {
 		padding: 805px 0px 5px 0px; /*top, right, bottom and left*/
 	}
 
