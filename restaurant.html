@@ -20,16 +20,16 @@
 <body class="inside">
   <!-- <a href="#reviews-container" class="skip-link">Skip to reviews content</a> -->
   <!-- Beginning header -->
-  <header role="banner">
+  <header>
     <!-- Beginning nav -->
-    <nav role="navigation">
-      <h1><a href="/">Restaurant Reviews</a></h1>
+    <nav role="navigation" tabindex="-1">
+      <h1><a href="/" tabindex="-1">Restaurant Reviews</a></h1>
     </nav>
     <!-- Beginning breadcrumb -->
-    <div id="breadcrumb">
+    <div id="breadcrumb" tabindex="-1">
       <li><a href="/">Home</a></li>
-      <li><a href="#restaurant-hours" >Timetable</a></li>
-      <li><a href="#reviews-container" >Reviews</a></li>
+      <!-- <li><a href="#restaurant-hours" >Timetable</a></li>
+      <li><a href="#reviews-container" >Reviews</a></li> -->
 
     </div>
     <!-- End breadcrumb -->
@@ -41,7 +41,8 @@
   <main id="maincontent">
     <!-- Beginning map -->
     <section id="map-container">
-      <div id="map"></div>
+      <div id="map" aria-label="You are the map view: use the arrows keys to move
+      the map to any direction."></div>
     </section>
     <!-- End map -->
     <!-- Beginning restaurant -->
@@ -50,12 +51,12 @@
         <img id="restaurant-img">
         <p id="restaurant-cuisine"></p>
         <p id="restaurant-address"></p>
-        <table id="restaurant-hours"></table>
+        <table id="restaurant-hours" tabindex="0" role="articles"></table>
     </section>
     <!-- end restaurant -->
     <!-- Beginning reviews -->
-    <section id="reviews-container">
-      <div id="reviews-list" role="article"></div>
+    <section id="reviews-container" tabindex="0" >
+      <div id="reviews-list" role="articles"></div>
     </section>
     <!-- End reviews -->
   </main>

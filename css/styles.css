@@ -2,7 +2,9 @@
 /* CSS Document */
 /*focus element*/
 #neighborhoods-select:focus,
+#neighborhoods-select:hover,
 #cuisines-select:focus,
+#cuisines-select:hover,
 .leaflet-control-zoom-in:focus,
 .leaflet-control-zoom-out:focus,
 .box a:focus
@@ -15,7 +17,7 @@
 	position: absolute;
 	top: -400px;
 	left: 0;
-	padding: 8px;
+	padding: 8px; /*top, right, bottom and left*/
 	z-index: 100;
 	font-size: 20pt;
 }
@@ -104,7 +106,8 @@ nav h1 a {
     background-color: #eee;
     font-size: 17px;
     margin: 0;
-    width: calc(50% - 121px);
+		width: 100%;
+    /* width: calc(50% - 121px); */
 }
 
 /* Display list items side by side */
@@ -115,7 +118,7 @@ nav h1 a {
 
 /* Add a slash symbol (/) before/behind each list item */
 #breadcrumb li+li:before {
-    padding: 8px;
+    padding: 8px; /*top, right, bottom and left*/
     color: black;
     content: "/\00a0";
 }
@@ -141,7 +144,7 @@ nav h1 a {
 	border-style: solid;
 	border-color: red;
 	width: 99%;
-	border-width: 10px 10px 10px 10px;
+	border-width: 10px 10px 10px 10px; /*top, right, bottom and left*/
 }
 /* ====================== Restaurant Filtering ====================== */
 .filter-options {
@@ -149,8 +152,8 @@ nav h1 a {
   min-height: 100px;
   background-color: #3397DB;
   align-items: center;
-	padding-top: 10px;
-	padding-bottom: 5px;
+	padding-top: 10px; /*top, right, bottom and left*/
+	padding-bottom: 5px; /*top, right, bottom and left*/
 }
 .filter-options h2 {
   color: white;
@@ -168,7 +171,7 @@ nav h1 a {
   height: 45px;
   letter-spacing: 0;
   margin: 10px;
-  padding: 0 10px;
+  padding: 0 10px; /*top, right, bottom and left*/
   width: 300px;
 }
 
@@ -181,7 +184,7 @@ nav h1 a {
   background-color: #f3f3f3;
   list-style: outside none none;
   margin: 0;
-  padding: 30px 15px 60px;
+  padding: 30px 15px 60px; /*top, right, bottom and left*/
   text-align: center;
 }
 #restaurants-list li {
@@ -190,7 +193,7 @@ nav h1 a {
   font-family: Arial,sans-serif;
   margin: 15px;
   min-height: 380px;
-  padding: 25px 30px 25px;
+  padding: 25px 30px 25px; /*top, right, bottom and left*/
   text-align: left;
   width: 270px;
 }
@@ -219,18 +222,18 @@ nav h1 a {
 .box {
   max-width: 32.333%;
 	border-style: solid;
-	padding-bottom: 5px;
+	padding-bottom: 5px; /*top, right, bottom and left*/
 }
 
 div .box {
 	margin-left: 2px;
-	margin-bottom: 2px;	
+	margin-bottom: 2px;
 }
 
 .box p {
-	padding-bottom: 5px;
+	padding-bottom: 5px; /*top, right, bottom and left*/
 }
-.box a {
+.box button {
 	border-radius: 25px;
 	border: solid black;
   background-color: #3397DB; /*#34495E; /*#3397DB; /*#252831; /*orange;*/
@@ -239,14 +242,39 @@ div .box {
   font-size: 15pt;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	letter-spacing: 3px;
-  padding: 8px 30px 10px;
+  padding: 8px 30px 10px; /*top, right, bottom and left*/
   text-align: center;
   text-transform: uppercase;
+  position: relative; /*necessary to be inside the box*/
+  box-sizing: border-box;
+  transition: all 500ms ease;
 }
 
+/*creates a pseudo-element that is the first child of the selected element
+Used to add cosmetic content to an element*/
+button:before {
+	content:'';
+	position: absolute;
+  height: 43px;
+	top: 0px;
+	left: 0px;
+	width: 0px;
+	/* background: rgba(255,0,0,0.4); */
+  background-image: linear-gradient(to right, rgba(255,255,255,0.4), rgba(255,0,0,0.6));
+	border-radius: 25px;
+	transition: all 1s ease;
+  cursor: pointer;
+}
+
+button:hover:before,
+button:focus:before {
+	width: 100%;
+ }
+
 .box a:hover,
-.box a:focus {
-	background-color: orange;
+.box button:hover,
+.box button:focus {
+	border: solid 4px red;
 	font-size: 16pt;
 }
 
@@ -258,8 +286,7 @@ div .box {
   z-index: 1000;
 }
 .inside #map-container {
-  background: blue none repeat scroll 0 0;
-  height: 87%;
+  height: 77%;
   position: fixed;
   right: 20px;
   top: 130px;
@@ -310,7 +337,7 @@ div .box {
   font-weight: 300;
   letter-spacing: 10px;
   margin: 0 0 20px;
-  padding: 2px 0;
+  padding: 2px 0; /*top, right, bottom and left*/
   text-align: center;
   text-transform: uppercase;
 	width: 90%;
@@ -318,7 +345,7 @@ div .box {
 #restaurant-container, #reviews-container {
   border-bottom: 1px solid #d9d9d9;
   border-top: 1px solid #fff;
-  padding: 140px 40px 30px;
+  padding: 140px 40px 30px; /*top, right, bottom and left*/
   width: 50%;
 }
 #reviews-container {
@@ -326,24 +353,29 @@ div .box {
 }
 #breadcrumb a:focus,
 #restaurant-name:focus,
-#reviews-container:focus,
 #restaurant-hours:focus {
 	border: 3px solid red;
 }
 
+#reviews-container:focus{
+	padding: 130px 0px 5px 0px; /*top, right, bottom and left*/
+}
+
 #reviews-container {
-  padding: 30px 32px 80px;
+  padding: 30px 32px 80px; /*top, right, bottom and left*/
 }
 #reviews-container h2 {
 	color: black;
   font-size: 24pt;
   font-weight: 300;
   letter-spacing: -1px;
-  padding-bottom: 1pt;
+  padding-bottom: 1pt; /*top, right, bottom and left*/
+	margin-top: 30px;
+	margin-bottom: 30px;
 }
 #reviews-list {
   margin: 0;
-  padding: 0;
+  padding: 0; /*top, right, bottom and left*/
 }
 #reviews-list li {
   background-color: #fff;
@@ -353,7 +385,7 @@ div .box {
   list-style-type: none;
   margin: 0 0 5px;
   overflow: hidden;
-  padding: 0 20px 20px;
+  padding: 0 20px 20px; /*top, right, bottom and left*/
   position: relative;
   width: 85%;
 }
@@ -435,6 +467,8 @@ tbody tr:nth-child(odd) {
 
 	/*restaurant.html*/
 	#restaurant-hours {
+		margin-top: 30px;
+		margin-bottom: 30px;
 		min-width: 80%;
 	}
 
@@ -627,9 +661,7 @@ tbody tr:nth-child(odd) {
 	  background-color: #fff;
 	  /* border: 2px solid #f3f3f3; */
 		border: none;
-	  padding: 0 0px 0px;
+	  padding: 0 0px 0px; /*top, right, bottom and left*/
 	  width: 98%;
 	}
-
-
 }

@@ -15,22 +15,22 @@ var markers = [];
  * 1- register: this tells the browser where your service Worker
  * JavaScript file lives. The register is done in this file:
  * main.js.
-/*
-You can call register() every time a page loads without concern;
-the browser will figure out if the service worker is already registered or not
-and handle it accordingly.
-*/
-/* The below steps of ServiceWork are done in the file sw.js at root folder!
- * 2- install: at this point you define a callback for the install event and
- * decide which files you want to cache.
- So, inside our install callback, we define:
-  A- Open a cache.
-  B- Cache our files.
-  C- Confirm whether all the required assets are cached or not.
- * 3- activate
- A- remove unwanted caches.
- 4- Fetch add fetch event to be able to restore the data if you is offline
-*/
+  /*
+  You can call register() every time a page loads without concern;
+  the browser will figure out if the service worker is already registered or not
+  and handle it accordingly.
+  */
+  /* The below steps of ServiceWork are done in the file sw.js at root folder!
+   * 2- install: at this point you define a callback for the install event and
+   * decide which files you want to cache.
+   So, inside our install callback, we define:
+    A- Open a cache.
+    B- Cache our files.
+    C- Confirm whether all the required assets are cached or not.
+   * 3- activate
+   A- remove unwanted caches.
+   4- Fetch add fetch event to be able to restore the data if you is offline
+  */
 
 //First STEP: let's check if is supported and if yes, let's register it!
 
@@ -196,7 +196,6 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
     ul.append(createRestaurantHTML(restaurant));
     index++;
   });
-    debugger
   updateAriaLabel.setAttribute("aria-label","The filter results shows " + index + " restaurants");
   addMarkersToMap();
 }
@@ -227,11 +226,12 @@ createRestaurantHTML = (restaurant) => {
   address.innerHTML = restaurant.address;
   element_div.append(address);
 
-  const more = document.createElement('a');
+  const more = document.createElement('button');
   more.innerHTML = 'View Details'; // + restaurant.name;
   more.setAttribute("aria-label", "Click here to view more details of the restaurant" + restaurant.name);
   //Not really necessary because of the link a.
   more.setAttribute("tabindex", 0);
+  more.setAttribute("class", "aButton");
 
   more.href = DBHelper.urlForRestaurant(restaurant);
   element_div.append(more);
