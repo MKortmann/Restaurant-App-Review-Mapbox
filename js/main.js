@@ -8,6 +8,11 @@ let restaurants, neighborhoods, cuisines, fetchNeighborhoods,
   createRestaurantHTML, addMarkersToMap;
 var newMap;
 var markers = [];
+let totalRestaurants = 0; /*To check how many restaurants we have*/
+let circle = 0;
+let MapLat = 0;
+let MapLong = 0;
+
 
 /*FIRST STEP: declaring the service work!*
 /*
@@ -135,7 +140,11 @@ initMap = () => {
   document.querySelector(".leaflet-control-attribution").innerHTML = "";
   //it will call two functions to reset and update the index HTML page
   updateRestaurants();
+
 }
+
+
+
 /**
  * Update page and map for current restaurants.
  * You see that it is using arrow functions! ES6!
@@ -180,6 +189,19 @@ resetRestaurants = (restaurants) => {
   }
   self.markers = [];
   self.restaurants = restaurants;
+
+  /*clearing the number of markers*/
+  totalRestaurants = 0;
+  /*cleaning circle*/
+  if(circle) {
+    newMap.removeLayer(circle);
+  }
+  if(MapLat) {
+    MapLat = 0;
+  }
+  if (MapLong) {
+    MapLong = 0;
+  }
 }
 /**
  * Create all restaurants HTML and add them to the webpage.
@@ -191,12 +213,32 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   //Loop: get all the needs information of the restaurants as
   //image, address, neighborhood and append it to the HTML.
   let updateAriaLabel = document.querySelector("#restaurants-list");
-  let index = 0;
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
-    index++;
+    totalRestaurants++;
+    MapLat += restaurant.latlng.lat;
+    MapLong += restaurant.latlng.lng;
   });
-  updateAriaLabel.setAttribute("aria-label","The filter results shows " + index + " restaurants");
+
+  console.log("Index Result: " + totalRestaurants);
+  updateAriaLabel.setAttribute("aria-label","The filter results shows " + totalRestaurants + " restaurants");
+
+  // // debugger;
+  //
+  if(totalRestaurants) {
+    MapLat = MapLat / totalRestaurants;
+    MapLong = MapLong / totalRestaurants;
+  }
+
+  if(totalRestaurants) {
+    // Adding a circle
+    circle = L.circle([MapLat, MapLong], {
+        color: 'red',
+        fillColor: '#f03',
+        fillOpacity: 0.2,
+        radius: totalRestaurants * 1120
+    }).addTo(newMap);
+  }
   addMarkersToMap();
 }
 /**

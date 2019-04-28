@@ -87,7 +87,7 @@ article, aside, canvas, details, figcaption, figure, footer, header, hgroup, men
 	color: white;
   font-size: 8pt;
   letter-spacing: 1px;
-	padding: 25px 25px 25px 10px; /*top, right, bottom and left*/
+	padding: 15px 25px 15px 10px; /*top, right, bottom and left*/
   text-align: center;
   text-transform: uppercase;
 	position: fixed;
@@ -156,7 +156,8 @@ nav h1 a {
   width: 100%;
   background-color: #ccc;
 }
-#map:focus {
+#map:focus,
+#map:hover {
 	border-style: solid;
 	border-color: red;
 	width: 99%;
@@ -200,10 +201,10 @@ nav h1 a {
   color: #3397DB;
 }
 #restaurants-list {
-  background-color: #f3f3f3;
+  background-color: white; 
   list-style: outside none none;
   margin: 0;
-  padding: 30px 15px 60px; /*top, right, bottom and left*/
+  padding: 5px 5px 60px 5px; /*top, right, bottom and left*/
   text-align: center;
 }
 #restaurants-list li {
@@ -238,7 +239,7 @@ nav h1 a {
   font-size: 14pt;
 }
 .box {
-  max-width: 32.333%;
+  max-width: 32.8%;
 	border-style: solid;
 	padding-bottom: 5px; /*top, right, bottom and left*/
 }
@@ -307,14 +308,13 @@ a:before {
   z-index: 1000;
 }
 .inside #map-container {
-  height: 77%;
+  height: 78.5%;
   position: fixed;
   right: 20px;
-  top: 130px;
+  top: 140px;
   width: 50%;
 }
 .inside #map {
-  background-color: #ccc;
   height: 100%;
   width: 100%;
 }
@@ -575,7 +575,7 @@ tbody tr:nth-child(odd) {
 	}
 
 	.inside #map-container {
-		margin: 5px -20px 5px 0px; /*top, right, bottom and left*/
+		margin: 5px -22px 5px 0px; /*top, right, bottom and left*/
 	}
 
   /*Restaurant html*/
