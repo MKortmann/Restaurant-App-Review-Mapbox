@@ -131,6 +131,7 @@ initMap = () => {
     //   'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
     id: 'mapbox.streets'
   }).addTo(newMap);
+  /*Because of the accessibility I am removing this controls. We do not need it.*/
   document.querySelector(".leaflet-control-attribution").innerHTML = "";
   //it will call two functions to reset and update the index HTML page
   updateRestaurants();
@@ -189,9 +190,14 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   const ul = document.getElementById('restaurants-list');
   //Loop: get all the needs information of the restaurants as
   //image, address, neighborhood and append it to the HTML.
+  let updateAriaLabel = document.querySelector("#restaurants-list");
+  let index = 0;
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
+    index++;
   });
+    debugger
+  updateAriaLabel.setAttribute("aria-label","The filter results shows " + index + " restaurants");
   addMarkersToMap();
 }
 /**
@@ -222,7 +228,11 @@ createRestaurantHTML = (restaurant) => {
   element_div.append(address);
 
   const more = document.createElement('a');
-  more.innerHTML = 'View Details';
+  more.innerHTML = 'View Details'; // + restaurant.name;
+  more.setAttribute("aria-label", "Click here to view more details of the restaurant" + restaurant.name);
+  //Not really necessary because of the link a.
+  more.setAttribute("tabindex", 0);
+
   more.href = DBHelper.urlForRestaurant(restaurant);
   element_div.append(more);
 
@@ -245,6 +255,10 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 
   document.querySelectorAll(".leaflet-interactive").forEach(function(val) {
       val.tabIndex = -1;
+      /*Removing it because of the voice to speach, the interaction was also
+      removed. It does not make sense.*/
+      val.title = "";
+      val.alt = "";
     });
 
 }

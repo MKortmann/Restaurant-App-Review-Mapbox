@@ -214,25 +214,40 @@ nav h1 a {
 }
 #restaurants-list p {
   margin: 0;
-  font-size: 11pt;
+  font-size: 14pt;
+}
+.box {
+  max-width: 32.333%;
+	border-style: solid;
+	padding-bottom: 5px;
+}
+
+div .box {
+	margin-left: 2px;
+	margin-bottom: 2px;	
+}
+
+.box p {
+	padding-bottom: 5px;
 }
 .box a {
-  background-color: #3397DB; /*#252831; /*orange;*/
-  border-bottom: 3px solid #eee;
-  color: #fff;
+	border-radius: 25px;
+	border: solid black;
+  background-color: #3397DB; /*#34495E; /*#3397DB; /*#252831; /*orange;*/
+  color: white;
   display: inline-block;
-  font-size: 10pt;
-  margin: 15px 0 5;
+  font-size: 15pt;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+	letter-spacing: 3px;
   padding: 8px 30px 10px;
   text-align: center;
-  text-decoration: none;
   text-transform: uppercase;
 }
 
 .box a:hover,
 .box a:focus {
 	background-color: orange;
-	font-size: 11pt;
+	font-size: 16pt;
 }
 
 /* ====================== Restaurant Details ====================== */
@@ -314,14 +329,12 @@ nav h1 a {
 #reviews-container:focus,
 #restaurant-hours:focus {
 	border: 3px solid red;
-	/* background-color: red; */
 }
 
 #reviews-container {
   padding: 30px 32px 80px;
 }
 #reviews-container h2 {
-  /* color: #f58500; */
 	color: black;
   font-size: 24pt;
   font-weight: 300;
@@ -373,11 +386,6 @@ tbody tr:nth-child(odd) {
 	justify-content: center;
 	padding: 5px 5px 5px 5px; /*top, right, bottom and left*/
 	margin-bottom: 30px;
-}
-
-.box {
-    max-width: 32.333%;
-		border-style: solid;
 }
 
 /*This should be write in the end, if not, it does not work*/
@@ -575,6 +583,10 @@ tbody tr:nth-child(odd) {
 	#reviews-list  {
 			padding: 0px 0px 0px 5px; /*top, right, bottom and left*/
 			/* width: 76%; */
+	}
+	#restaurants-list p {
+	  margin: 0;
+	  font-size: 11pt;
 	}
 }
 
