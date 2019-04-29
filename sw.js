@@ -25,7 +25,7 @@ const cacheAssets = [
 ];
 
 //Call Install Event
-self.addEventListener("install", (event) => {
+self.addEventListener("install", event => {
   console.log("Service Worker: Installed");
   //just tells the browser to wait until our promise is finished.
   event.waitUntil(
@@ -33,7 +33,7 @@ self.addEventListener("install", (event) => {
     caches
       .open(cacheName)
       .then(cache => {
-        console.log("Service Worker: Caching Files");
+        console.log("Service Worker: Status: Caching Files");
         //put the caches that you want to assets
         cache.addAll(cacheAssets);
       })
@@ -44,7 +44,7 @@ self.addEventListener("install", (event) => {
 
 //Call Activate Event
 //We will also remove unwanted cache!
-self.addEventListener("activate", (event) => {
+self.addEventListener("activate", event => {
   console.log("Service Worker: Activated");
   // Remove unwanted caches
   event.waitUntil(
@@ -62,8 +62,10 @@ self.addEventListener("activate", (event) => {
   );
 })
 
+
 //Implement the fetch event to make the content available offline
-self.addEventListener("fetch", (event) => {
+/*Version 1: I think this does not work because of the maps*/
+self.addEventListener("fetch", event => {
   console.log("Service Worker: Fetching");
   event.respondWith(
     //event.request get the initial request

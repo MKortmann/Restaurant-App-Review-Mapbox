@@ -44,11 +44,13 @@ if("serviceWorker" in navigator) {
   //callback function ES6
   window.addEventListener("load", () => {
     navigator.serviceWorker
-      .register("/sw.js")
+      .register("/swCacheAll.js")
       .then(reg => console.log("Service Worker Registered"))
       //something went wrong?
       .catch(err => console.log(`Service Worker: Erro: ${err}`));
   });
+} else {
+  console.log("Your browser do not support Service Work");
 }
 /*NOW IMPLEMENT THE HOLE FUNCTIONALITY !
 /**
