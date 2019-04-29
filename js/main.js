@@ -9,9 +9,10 @@ let restaurants, neighborhoods, cuisines, fetchNeighborhoods,
 var newMap;
 var markers = [];
 let totalRestaurants = 0; /*To check how many restaurants we have*/
-let circle = 0;
-let MapLat = 0;
-let MapLong = 0;
+let mapCircle = 0;
+let mapLat = 0;
+let mapLong = 0;
+let mapCircleSize = 0;
 
 
 /*FIRST STEP: declaring the service work!*
@@ -192,15 +193,16 @@ resetRestaurants = (restaurants) => {
 
   /*clearing the number of markers*/
   totalRestaurants = 0;
-  /*cleaning circle*/
-  if(circle) {
-    newMap.removeLayer(circle);
+  mapCircleSize = 0;
+  /*cleaning mapCircle*/
+  if(mapCircle) {
+    newMap.removeLayer(mapCircle);
   }
-  if(MapLat) {
-    MapLat = 0;
+  if(mapLat) {
+    mapLat = 0;
   }
-  if (MapLong) {
-    MapLong = 0;
+  if (mapLong) {
+    mapLong = 0;
   }
 }
 /**
@@ -216,8 +218,8 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     ul.append(createRestaurantHTML(restaurant));
     totalRestaurants++;
-    MapLat += restaurant.latlng.lat;
-    MapLong += restaurant.latlng.lng;
+    mapLat += restaurant.latlng.lat;
+    mapLong += restaurant.latlng.lng;
   });
 
   console.log("Index Result: " + totalRestaurants);
@@ -226,20 +228,32 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
   // // debugger;
   //
   if(totalRestaurants) {
-    MapLat = MapLat / totalRestaurants;
-    MapLong = MapLong / totalRestaurants;
+    mapLat = mapLat / totalRestaurants;
+    mapLong = mapLong / totalRestaurants;
   }
+
+  mapCircleSize = totalRestaurants > 5 ? 600:1120;
+
+  console.log(mapCircleSize);
 
   if(totalRestaurants) {
     // Adding a circle
-    circle = L.circle([MapLat, MapLong], {
+    mapCircle = L.circle([mapLat, mapLong], {
         color: 'red',
         fillColor: '#f03',
         fillOpacity: 0.2,
-        radius: totalRestaurants * 1120
+        radius: totalRestaurants * mapCircleSize
     }).addTo(newMap);
   }
   addMarkersToMap();
+
+  if(!totalRestaurants) {
+    let resList = document.querySelector(".container");
+    const element_h2 = document.createElement("h2");
+    element_h2.innerHTML = "Sorry, there aren't any restaurant that match the filter results!";
+    resList.append(element_h2);
+  }
+
 }
 /**
  * Create restaurant HTML.
@@ -321,3 +335,18 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 // // document.querySelector(".leaflet-control-attribution").innerHTML = "";
 //
 // });
+
+/*Some Interactive Functions: very important for the interaction*/
+  window.addEventListener("load", function() {
+  newMap.once('focus', function() {
+
+    window.addEventListener("keydown", function(e) {
+    // space and arrow keys
+    if([32, 37, 38, 39, 40].indexOf(e.keyCode) >= 0) {
+        e.preventDefault();
+    }
+}, false);
+
+
+  });
+  });

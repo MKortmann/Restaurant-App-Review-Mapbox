@@ -5,11 +5,20 @@ let restaurant, initMap, fetchRestaurantFromURL, fillRestaurantHTML,
 getParameterByName, fillRestaurantHoursHTML, fillReviewsHTML, createReviewHTML,
 fillBreadcrumb;
 var newMap;
+
 /**
  * Initialize map as soon as the page is loaded.
  */
 document.addEventListener('DOMContentLoaded', (event) => {
   initMap();
+
+  window.addEventListener("keydown", function(e) {
+  // space and arrow keys
+  if([32, 37, 38, 39, 40].indexOf(e.keyCode) >= 0) {
+      e.preventDefault();
+  }
+  }, false);
+  
 });
 /**
  * Initialize leaflet map
@@ -36,6 +45,7 @@ initMap = () => {
       DBHelper.mapMarkerForRestaurant(self.restaurant, self.newMap);
 
       document.querySelector(".leaflet-interactive").tabIndex = -1;
+
     }
   });
 }
@@ -184,3 +194,14 @@ getParameterByName = (name, url) => {
     //it returns 3.
   return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
+
+// /*Some Interactive Functions: very important for the interaction*/
+//   window.addEventListener("load", function() {
+//   newMap.once('focus', function() {
+//
+//     window.addEventListener("keydown", function(e) {
+//     // space and arrow keys
+//     if([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1) {
+//         e.preventDefault();
+//     }
+// }, false);
