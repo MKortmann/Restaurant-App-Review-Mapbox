@@ -44,6 +44,9 @@ if("serviceWorker" in navigator) {
   //callback function ES6
   window.addEventListener("load", () => {
     navigator.serviceWorker
+      /*Solution 1: it did not work because of the maps. I guess.*/
+      // .register("/sw.js")
+      /*Solution 2: save directly all the requests to the cache!.*/
       .register("/swCacheAll.js")
       .then(reg => console.log("Service Worker Registered"))
       //something went wrong?
