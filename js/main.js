@@ -338,15 +338,34 @@ addMarkersToMap = (restaurants = self.restaurants) => {
 
 /*Some Interactive Functions: very important for the interaction*/
   window.addEventListener("load", function() {
-  newMap.once('focus', function() {
 
-    window.addEventListener("keydown", function(e) {
-    // space and arrow keys
-    if([32, 37, 38, 39, 40].indexOf(e.keyCode) >= 0) {
-        e.preventDefault();
-    }
-}, false);
+    newMap.once('focus', function() {
 
+      window.addEventListener("keydown", function(e) {
+        // space and arrow keys
+        if([32, 37, 38, 39, 40].indexOf(e.keyCode) >= 0) {
+            e.preventDefault();
+        }
+      }, false);
 
-  });
+      document.querySelector("#inlinePopups").classList.remove("fromUpToDown");
+      document.querySelector("#inlinePopups").classList.add("open");
+
+      setTimeout(() => {
+        document.querySelector("#inlinePopups").classList.add("fromUpToDown");
+        console.log("active!");
+        document.querySelector("#inlinePopups").classList.remove("open");
+      }, 3000);
+    });
+  //   /*Checking if the select box has focus:*/
+  //   const select = document.querySelector("#neighborhoods-select");
+  //   const skipContent = document.querySelector(".skip-link");
+  // if(select == window.document.activeElement) {
+  //   console.log("true");
+  //
+  //   document.querySelector("#inlinePopups").classList.add("fromUpToDown");
+  // } else {
+  //   debugger
+  //   console.log("false")
+
   });

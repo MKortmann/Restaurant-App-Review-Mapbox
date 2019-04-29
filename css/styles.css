@@ -18,12 +18,32 @@
 	padding: 8px; /*top, right, bottom and left*/
 	z-index: 100;
 	font-size: 30pt;
-
 }
 
 .skip-link:focus {
 	top: 0;
   color: red;
+}
+
+#inlinePopups {
+	padding: 0;
+}
+/*PopUp From Up to Down*/
+.fromUpToDown {
+	position: fixed;
+	/**NOT ABSOLUTE: very important because of the main:Y-Scroll*/
+	transform: translate(0, -10000px);
+	transition: transform 1s ease;
+	z-index: +1;
+}
+
+.open {
+	width: 100%;
+	background: linear-gradient(to top, red 10%, white 100%);
+	color: white;
+	transform: translate(0, 0);
+	transition: transform 0.3s ease;
+	font-size: 2em;
 }
 
 html {
@@ -201,7 +221,7 @@ nav h1 a {
   color: #3397DB;
 }
 #restaurants-list {
-  background-color: white; 
+  background-color: white;
   list-style: outside none none;
   margin: 0;
   padding: 5px 5px 60px 5px; /*top, right, bottom and left*/
