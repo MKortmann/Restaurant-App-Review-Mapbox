@@ -15,7 +15,8 @@ This app enclosed many amazing features:
     -- You can completely interact with the homepage through voice. Try to use the google Chrome extension
  called **ChromeVox.**
   - **Map** implemented using [leafletjs](https://leafletjs.com/) and [Mapbox](https://www.mapbox.com/).
-    -- Leaflet: it is a open-source JavaScript library for mobile-friendly interactive maps.
+    Leaflet: it is a open-source JavaScript library for mobile-friendly interactive maps.
+    Mapbox: is the location data platform for mobile and web applications. 
   - Packed with **Animations** and **Complete new redesign**
   
 ## How to start the App?
