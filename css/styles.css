@@ -1,25 +1,6 @@
-/* CSS Document */
-
-/*focus element*/
-#neighborhoods-select:focus,
-#neighborhoods-select:hover,
-#cuisines-select:focus,
-#cuisines-select:hover {
-	border: 3px solid red;
-	color: black;
-}
-
-.cStar {
-	margin-top: 10px;
-	max-width: 32px;
-	max-height: 32px;
-}
-
-.leaflet-control-zoom-in:focus,
-.leaflet-control-zoom-out:focus {
-	background-color: red;
-}
-
+/*The CSS follows the order of elements displayed at html.index, then
+restaurant.html and in the last we have css queries for web responsive.*/
+/* ====================== HTML SKIP-LINK!-  ====================== */
 .skip-link {
 	position: absolute;
 	top: -400px;
@@ -34,7 +15,6 @@
 	font-size: 25pt;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 	letter-spacing: 3px;
-
 }
 
 .skip-link:focus {
@@ -43,6 +23,7 @@
 	color: white;
 }
 
+/* ====================== HTML POP-UPs!  ====================== */
 #inlinePopups {
 	padding: 0;
 }
@@ -65,6 +46,7 @@
 	color: black;
 }
 
+/* ====================== HTML, BODY, GENERAL BASICS  ====================== */
 html {
 	max-width: 100%;
 }
@@ -147,23 +129,10 @@ section {
 	display: block;
 }
 
+/* ====================== Main Content ====================== */
 #maincontent {
-	background-color: #f3f3f3;
-	min-height: 100%;
-}
-
-#footer {
 	background-color: white;
-	color: black;
-	font-size: 12pt;
-	letter-spacing: 1px;
-	padding: 8px 25px 8px 10px;
-	/*top, right, bottom and left*/
-	text-align: center;
-	text-transform: uppercase;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+	min-height: 100%;
 }
 
 /* ====================== Navigation ====================== */
@@ -289,12 +258,9 @@ nav h1 a {
 	width: 100%;
 	min-height: 55px;
 	background-color: white;
-	/*#3397db; /*#A9D0F5;*/
 	align-items: center;
 	padding-top: 0;
-	/*top, right, bottom and left*/
 	padding-bottom: 0;
-	/*top, right, bottom and left*/
 }
 
 .filter-options:after {
@@ -318,6 +284,20 @@ nav h1 a {
 
 .selection {
 	text-align: center;
+}
+
+/*focus element*/
+#neighborhoods-select:focus,
+#neighborhoods-select:hover,
+#cuisines-select:focus,
+#cuisines-select:hover {
+	border: 3px solid red;
+	color: black;
+}
+
+.leaflet-control-zoom-in:focus,
+.leaflet-control-zoom-out:focus {
+	background-color: red;
 }
 
 /* ====================== Restaurant Listing ====================== */
@@ -354,17 +334,6 @@ nav h1 a {
 	min-height: 248px;
 }
 
-#restaurants-list li h1 {
-	color: #f18200;
-	font-family: Arial, sans-serif;
-	font-size: 14pt;
-	font-weight: 200;
-	letter-spacing: 0;
-	line-height: 1.3;
-	margin: 20px 0 10px;
-	text-transform: uppercase;
-}
-
 #restaurants-list p {
 	margin: 0;
 	font-size: 14pt;
@@ -374,7 +343,6 @@ nav h1 a {
 	max-width: 32.8%;
 	border-style: solid;
 	padding-bottom: 5px;
-	/*top, right, bottom and left*/
 }
 
 div .box {
@@ -384,7 +352,6 @@ div .box {
 
 .box p {
 	padding-bottom: 5px;
-	/*top, right, bottom and left*/
 }
 
 .box a {
@@ -439,6 +406,22 @@ a:before {
 .container:focus {
 	background-color: red;
 	border: solid 10px red;
+}
+
+/* ====================== Footer ====================== */
+
+#footer {
+	background-color: white;
+	color: black;
+	font-size: 12pt;
+	letter-spacing: 1px;
+	padding: 8px 25px 8px 10px;
+	/*top, right, bottom and left*/
+	text-align: center;
+	text-transform: uppercase;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 
 /* ====================== Restaurant Details ====================== */
@@ -607,8 +590,6 @@ a:before {
 	margin: 0 0 0px;
 	font-size: 12pt;
 	text-align: justify;
-	;
-
 }
 
 #reviews-list h2 {
@@ -625,9 +606,15 @@ tbody tr:nth-child(odd) {
 	background-color: #3397DB;
 }
 
-/* WEB RESPONSIVE DESIGN
- * <<COLUMN DROP>>
- *
+.cStar {
+	margin-top: 10px;
+	max-width: 32px;
+	max-height: 32px;
+}
+
+/* ====================== Web Responsive Design ====================== */
+/*
+ * <<COLUMN DROP for index.html>>
  *
  */
 .container {
@@ -640,7 +627,7 @@ tbody tr:nth-child(odd) {
 }
 
 /*This should be write in the end, if not, it does not work*/
-/*1600*/
+/* ====================== 1600 ====================== */
 @media screen and (max-width: 1600px) {
 	#restaurant-container {
 		padding: 130px 5px 5px 28px;
@@ -652,7 +639,7 @@ tbody tr:nth-child(odd) {
 	}
 }
 
-/*1500*/
+/* ====================== 1500 ====================== */
 @media screen and (max-width: 1500px) {
 	#restaurant-container {
 		padding: 130px 5px 5px 22px;
@@ -660,7 +647,7 @@ tbody tr:nth-child(odd) {
 	}
 }
 
-/*1350*/
+/* ====================== 1350 ====================== */
 @media screen and (max-width: 1350px) {
 	#restaurant-container {
 		padding: 130px 5px 5px 22px;
@@ -668,7 +655,7 @@ tbody tr:nth-child(odd) {
 	}
 }
 
-/*1200*/
+/* ====================== 1200 ====================== */
 @media screen and (max-width: 1200px) {
 	.box {
 		max-width: 49%;
@@ -719,7 +706,7 @@ tbody tr:nth-child(odd) {
 	}
 }
 
-/*880px*/
+/* ====================== 880 ====================== */
 @media screen and (max-width: 880px) {
 
 	/*Restaurant html*/
@@ -751,7 +738,7 @@ tbody tr:nth-child(odd) {
 
 }
 
-/*600px*/
+/* ====================== 600 ====================== */
 @media screen and (max-width: 600px) {
 	div .box {
 		margin-left: 0;
@@ -804,7 +791,7 @@ tbody tr:nth-child(odd) {
 
 }
 
-/*420*/
+/* ====================== 420 ====================== */
 
 @media screen and (max-width: 420px) {
 	.navRestaurant {
@@ -820,8 +807,13 @@ tbody tr:nth-child(odd) {
 	}
 }
 
-/*400*/
+/* ====================== 400 ====================== */
 @media screen and (max-width: 400px) {
+
+	.box a {
+		font-size: 10pt;
+		line-height: 1.0;
+	}
 
 	/*Restaurant html*/
 	#restaurant-container {
@@ -837,17 +829,12 @@ tbody tr:nth-child(odd) {
 		font-size: 11pt;
 	}
 
-	.box a {
-		font-size: 10pt;
-		line-height: 1.0;
-	}
-
 	.inside #map-container {
 		width: 88.0%;
 	}
 }
 
-/*330px*/
+/* ====================== 330 ====================== */
 @media screen and (max-width: 330px) {
 
 	.filter-options h2 {
