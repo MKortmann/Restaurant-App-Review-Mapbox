@@ -55,7 +55,8 @@ if ("serviceWorker" in navigator) {
 } else {
 	console.log("Your browser do not support Service Work");
 }
-/*NOW IMPLEMENT THE HOLE FUNCTIONALITY !
+
+/*NOW IMPLEMENT THE HOLE FUNCTIONALITY ! HERE START OUR main.js
 /**
  * Fetch neighborhoods and cuisines as soon as the page is loaded.
  */
@@ -149,8 +150,6 @@ initMap = () => {
 
 }
 
-
-
 /**
  * Update page and map for current restaurants.
  * You see that it is using arrow functions! ES6!
@@ -227,19 +226,14 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 		mapLong += restaurant.latlng.lng;
 	});
 
-	console.log("Index Result: " + totalRestaurants);
 	updateAriaLabel.setAttribute("aria-label", "The filter results shows " + totalRestaurants + " restaurants");
 
-	// // debugger;
-	//
 	if (totalRestaurants) {
 		mapLat = mapLat / totalRestaurants;
 		mapLong = mapLong / totalRestaurants;
 	}
 
 	mapCircleSize = totalRestaurants > 5 ? 600 : 1120;
-
-	console.log(mapCircleSize);
 
 	if (totalRestaurants) {
 		// Adding a circle
@@ -288,7 +282,7 @@ createRestaurantHTML = (restaurant) => {
 	element_div.append(address);
 
 	const more = document.createElement('a');
-	more.innerHTML = 'View Details'; // + restaurant.name;
+	more.innerHTML = 'View Details';
 	more.setAttribute("aria-label", "Click here to view more details of the restaurant" + restaurant.name);
 	//Not really necessary because of the link a.
 	more.setAttribute("tabindex", 0);
@@ -353,21 +347,3 @@ window.addEventListener("load", function() {
 
 	});
 });
-
-// document.querySelector("#neighborhoods-select").addEventListener("focus", function()
-//  {
-//   console.log("true");
-//   window.removeEventListener("keydown", removeKeys, true);
-// });
-
-
-//   /*Checking if the select box has focus:*/
-//   const select = document.querySelector("#neighborhoods-select");
-//   const skipContent = document.querySelector(".skip-link");
-// if(select == window.document.activeElement) {
-//   console.log("true");
-//
-//   document.querySelector("#inlinePopups").classList.add("fromUpToDown");
-// } else {
-//   debugger
-//   console.log("false")
