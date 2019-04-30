@@ -233,7 +233,9 @@ fillRestaurantsHTML = (restaurants = self.restaurants) => {
 		mapLong = mapLong / totalRestaurants;
 	}
 
-	mapCircleSize = totalRestaurants > 5 ? 600 : 1120;
+	// mapCircleSize = totalRestaurants > 5 ? 1120 : 1000;
+
+	mapCircleSize = 1400;
 
 	if (totalRestaurants) {
 		// Adding a circle
