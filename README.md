@@ -1,33 +1,54 @@
-# Mobile Web Specialist Certification Course
----
-#### _Three Stage Course Material Project - Restaurant Reviews_
+# Restaurant Review App
 
-## Project Overview: Stage 1
+For the **Restaurant Reviews** projects, I incrementally convert a static webpage to a mobile-ready web application. I start from a static design page that lacks accessibility and convert the design to be responsive on different sized displays and accessible for screen reader use. I added also a service worker to begin the process of creating a seamless offline experience for your users.
+This app enclosed many amazing features:
 
-For the **Restaurant Reviews** projects, you will incrementally convert a static webpage to a mobile-ready web application. In **Stage One**, you will take a static design that lacks accessibility and convert the design to be responsive on different sized displays and accessible for screen reader use. You will also add a service worker to begin the process of creating a seamless offline experience for your users.
+  - Work in many different browsers as _Google Chrome, Edge and Firefox
+ 
+  - **Responsive Design**
+  - **Keyboard Focus** allowing easy naviagtion! Implemented **Keyboard Trap** for better user experience. 
+    -- tab: move focus forward
+    -- shift + tab: move focus backward
+    -- arrow keys: move focus within a component
+    -- option + tab: in order to change focus in othr browsers like safari.
+ - **Web Accessibility** is reenforced here using WAI-ARIA (Accessible Rich Internet Applications). 
+    -- You can completely interact with the homepage through voice. Try to use the google Chrome extension
+ called **ChromeVox.**
+  - **Map** implemented using [leafletjs](https://leafletjs.com/) and [Mapbox](https://www.mapbox.com/).
+    -- Leaflet: it is a open-source JavaScript library for mobile-friendly interactive maps.
+  - Packed with **Animations** and **Complete new redesign**
+  
+## How to start the App?
 
-### Specification
+ Please, install the App using the instructions below.
 
-You have been provided the code for a restaurant reviews website. The code has a lot of issues. It’s barely usable on a desktop browser, much less a mobile device. It also doesn’t include any standard accessibility features, and it doesn’t work offline at all. Your job is to update the code to resolve these issues while still maintaining the included functionality.
+## What is the app about?
 
-### Project Rubric
+ The app shows a map with many different restaurant in New York City. The user can search the desire restaurants selecting: the cuisine or/and neighborhood. Depending of your filter, it will display a list of restaurants and the specific position of each restaurant in the map.
+ 
+ Clicking in each restaurant it will open a new page that contains more information about the selected restaurant.
+ Do not waste any time, install this app and try it!
 
-Your project will be evaluated by a Udacity code reviewer according to the [Restaurant Reviews project rubric](https://review.udacity.com/#!/rubrics/1090/view). Please review for detailed project requirements. The rubric should be a resource you refer to periodically to make sure your project meets specifications.
+## Installation
 
-### What do I do from here?
+1. First you have to create a directory in the desire location
 
-1. In this folder, start up a simple HTTP server to serve up the site files on your local computer. Python has some simple tools to do this, and you don't even need to know Python. For most people, it's already installed on your computer.
-
-    * In a terminal, check the version of Python you have: `python -V`. If you have Python 2.x, spin up the server with `python -m SimpleHTTPServer 8000` (or some other port, if port 8000 is already in use.) For Python 3.x, you can use `python3 -m http.server 8000`. If you don't have Python installed, navigate to Python's [website](https://www.python.org/) to download and install the software.
+2. git init
+3. git clone <address from git hub> 
+- Now, you will need a simple HTTP server. You can use any http server. However, I will show you in the step 4 how to start up a simple HTTP server using python.
+4. Starting the http server at port 8000:
+* In a terminal, check the version of Python you have: `python -V`. If you have Python 2.x, spin up the server with `python -m SimpleHTTPServer 8000` (or some other port, if port 8000 is already in use.) For Python 3.x, you can use `python3 -m http.server 8000`. If you don't have Python installed, navigate to Python's [website](https://www.python.org/) to download and install the software.
    * Note -  For Windows systems, Python 3.x is installed as `python` by default. To start a Python 3.x server, you can simply enter `python -m http.server 8000`.
-2. With your server running, visit the site: `http://localhost:8000`, and look around for a bit to see what the current experience looks like.
-3. Explore the provided code, and start making a plan to implement the required features in three areas: responsive design, accessibility and offline use.
-4. Write code to implement the updates to get this site on its way to being a mobile-ready website.
+   * With your server running, visit the site: `http://localhost:8000`
 
-## Leaflet.js and Mapbox:
+#### Note about ES6
 
-This repository uses [leafletjs](https://leafletjs.com/) with [Mapbox](https://www.mapbox.com/). You need to replace `<your MAPBOX API KEY HERE>` with a token from [Mapbox](https://www.mapbox.com/). Mapbox is free to use, and does not require any payment information.
+Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future-proofing JavaScript code. 
 
-### Note about ES6
+### More Information
 
-Most of the code in this project has been written to the ES6 JavaScript specification for compatibility with modern web browsers and future-proofing JavaScript code. As much as possible, try to maintain use of ES6 in any additional JavaScript you write.
+This project is a part from a Nanodegree Program done by Udacity (www.udacity.com). For any extra information, please, feel free to contact me.
+
+### Contributions
+
+The project was done completely by me starting from a basic code provided from Udacity. The starting code for a restaurant reviews website had a lot of issues. It was barely usable on a desktop browser, much less a mobile device. It also did not include any standard accessibility features, and it did not work offline at all. My job was to update the code to resolve these issues while still maintaining the included functionality.
