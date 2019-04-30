@@ -360,7 +360,7 @@ addMarkersToMap = (restaurants = self.restaurants) => {
         document.querySelector("#inlinePopups").classList.add("fromUpToDown");
         console.log("active!");
         document.querySelector("#inlinePopups").classList.remove("open");
-      }, 3000);
+      }, 10000);
     });
   //   /*Checking if the select box has focus:*/
   //   const select = document.querySelector("#neighborhoods-select");
