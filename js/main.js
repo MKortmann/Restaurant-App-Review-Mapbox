@@ -322,36 +322,25 @@ addMarkersToMap = (restaurants = self.restaurants) => {
     });
 
 }
-
-// /*Waiting the page to load: trying to improve the user experience!*/
-// window.addEventListener("load", function() {
-// /*disabling the map tabindex for markers! It not make sense to have
-// to tab over 10 markers!*/
-// // document.querySelectorAll(".leaflet-interactive").forEach(function(val) {
-// //     val.tabIndex = -1;
-// //   });
-// // /*We could disable the map, but in this case better not.*/
-// // // document.querySelector("#map").tabIndex = -1;
-// // /*Removing tab-index for map label attribution*/
-// // document.querySelector(".leaflet-control-attribution").tabIndex = -1;
-//
-// // /*Change the written below:*/
-// // const legend =  "OpenStreetMap, CC-BY-SA, Mapbox, Marcelo Kortmann";
-// // document.querySelector(".leaflet-control-attribution").innerHTML = "";
-//
-// });
-
+/*Important function because I did not find any function in Leaflet map
+to check when the map is not in focus. The problem is if the map is not
+in focus, we have to have sure that the arrow key down still work!*/
+function removeKeys(event) {
+  if(window.document.activeElement.id == "map")
+  {
+    if([32, 37, 38, 39, 40].indexOf(event.keyCode) >= 0) {
+        console.log(event.keyCode);
+        event.preventDefault();
+    }
+  } else {
+    console.log("comparison is false");
+  }
+}
 /*Some Interactive Functions: very important for the interaction*/
   window.addEventListener("load", function() {
 
     newMap.once('focus', function() {
-
-      window.addEventListener("keydown", function(e) {
-        // space and arrow keys
-        if([32, 37, 38, 39, 40].indexOf(e.keyCode) >= 0) {
-            e.preventDefault();
-        }
-      }, false);
+      window.addEventListener("keydown", removeKeys);
 
       document.querySelector("#inlinePopups").classList.remove("fromUpToDown");
       document.querySelector("#inlinePopups").classList.add("open");
@@ -361,7 +350,17 @@ addMarkersToMap = (restaurants = self.restaurants) => {
         console.log("active!");
         document.querySelector("#inlinePopups").classList.remove("open");
       }, 10000);
+
     });
+  });
+
+  // document.querySelector("#neighborhoods-select").addEventListener("focus", function()
+  //  {
+  //   console.log("true");
+  //   window.removeEventListener("keydown", removeKeys, true);
+  // });
+
+
   //   /*Checking if the select box has focus:*/
   //   const select = document.querySelector("#neighborhoods-select");
   //   const skipContent = document.querySelector(".skip-link");
@@ -372,5 +371,3 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   // } else {
   //   debugger
   //   console.log("false")
-
-  });

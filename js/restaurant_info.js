@@ -12,12 +12,17 @@ var newMap;
 document.addEventListener('DOMContentLoaded', (event) => {
   initMap();
 
-  window.addEventListener("keydown", function(e) {
-  // space and arrow keys
-  if([32, 37, 38, 39, 40].indexOf(e.keyCode) >= 0) {
-      e.preventDefault();
-  }
-  }, false);
+  window.addEventListener("keydown", function(event) {
+    if(window.document.activeElement.id == "map")
+    {
+      if([32, 37, 38, 39, 40].indexOf(event.keyCode) >= 0) {
+          console.log(event.keyCode);
+          event.preventDefault();
+      }
+    } else {
+      console.log("comparison is false");
+    }
+  });
 
 });
 /**
@@ -235,3 +240,27 @@ getParameterByName = (name, url) => {
 //         e.preventDefault();
 //     }
 // }, false);
+
+
+// /*Important function because I did not find any function in Leaflet map
+// to check when the map is not in focus. The problem is if the map is not
+// in focus, we have to have sure that the arrow key down still work!*/
+// function removeKeys(event) {
+//   if(window.document.activeElement.id == "map")
+//   {
+//     if([32, 37, 38, 39, 40].indexOf(event.keyCode) >= 0) {
+//         console.log(event.keyCode);
+//         event.preventDefault();
+//     }
+//   } else {
+//     console.log("comparison is false");
+//   }
+// }
+// /*Some Interactive Functions: very important for the interaction*/
+//   window.addEventListener("load", function() {
+//
+//     newMap.once('focus', function() {
+//       window.addEventListener("keydown", removeKeys);
+//
+//     });
+//   });
