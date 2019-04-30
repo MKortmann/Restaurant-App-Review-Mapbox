@@ -2,70 +2,69 @@
 <html lang="en">
 
 <head>
-  <!--According to Microsoft, when using the X-UA-Compatible tag, it should be
+	<!--According to Microsoft, when using the X-UA-Compatible tag, it should be
   as high as possible in your document head.-->
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
-  <link rel="stylesheet" src="//normalize-css.googlecode.com/svn/trunk/normalize.css" />
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin=""/>
-  <title>Restaurant Reviews</title>
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link href='https://api.mapbox.com/mapbox-gl-js/v0.53.0/mapbox-gl.css' rel='stylesheet' />
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="" />
+	<title>Restaurant Reviews</title>
 </head>
 
 <body>
-  <!--Skip link for keyboard users-->
-  <a href="#neighborhoods-select" class="skip-link">Skip to filter content</a>
-  <!--Header-->
-  <header role="banner">
-    <nav role="navigation">
-      <h1>
-        <span>
-          <a href="/" tabindex="-1" class="navRestaurant">Restaurant</a>
-          <a href="/" tabindex="-1" class="nav-reviews">Reviews</a>
-        </span>
-      </h1>
-    </nav>
-  </header>
+	<!--Skip link for keyboard users-->
+	<a href="#neighborhoods-select" class="skip-link">Skip to filter content</a>
+	<!--Header-->
+	<header>
+		<nav>
+			<h1>
+				<span>
+					<a href="/" tabindex="-1" class="navRestaurant">Restaurant</a>
+					<a href="/" tabindex="-1" class="nav-reviews">Reviews</a>
+				</span>
+			</h1>
+		</nav>
+	</header>
 
-  <!--Nice pop-Ups Information for keyboard users-->
-  <h2 class="fromUpToDown" id="inlinePopups">
-        Use the plus or minus keys to zoom in or out!
-  </h2>
+	<!--Nice pop-Ups Information for keyboard users-->
+	<h2 class="fromUpToDown" id="inlinePopups">
+		Use the plus or minus keys to zoom in or out!
+	</h2>
 
-  <!--Leaflet Map-->
-  <main id="maincontent">
-    <div id="map-container">
-      <div id="map" role="map" aria-label="You are the map view: use the arrows keys to move
+	<!--Leaflet Map-->
+	<main id="maincontent">
+		<div id="map-container">
+			<div id="map" aria-label="You are the map view: use the arrows keys to move
       the map to any direction. Use the plus or minus keys to zoom in or out">
-      </div>
-    </div>
+			</div>
+		</div>
 
-    <!--Selection Box:  Neighborhoods and Cuisines-->
-    <section class="filter-options">
-        <div class="selection">
-          <select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" role="listbox" aria-label="Filter option selected is:">
-            <option value="all" role="option" >All Neighborhoods</option>
-          </select>
-          <select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" role="listbox" aria-label="Filter option selected is:">
-            <option value="all" role="option">All Cuisines</option>
-          </select>
-        </div>
-    </section>
+		<!--Selection Box:  Neighborhoods and Cuisines-->
+		<div class="filter-options">
+			<div class="selection">
+				<select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-label="Filter option selected is:">
+					<option value="all">All Neighborhoods</option>
+				</select>
+				<select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-label="Filter option selected is:">
+					<option value="all">All Cuisines</option>
+				</select>
+			</div>
+		</div>
 
-    <!--COLUMN DROP technique: restaurant list-->
-      <div class="container" id="restaurants-list" tabindex="0" aria-label="List of filtered restaurants"></div>
+		<!--COLUMN DROP technique: restaurant list-->
+		<div class="container" id="restaurants-list" tabindex="0" aria-label="List of filtered restaurants"></div>
 
-  </main>
+	</main>
 
-  <footer id="footer" role="contentinfo">
-    Developed by Marcelo Kortmann - 2019
-  </footer>
+	<footer id="footer">
+		Developed by Marcelo Kortmann - 2019
+	</footer>
 
-  <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
-  <script src="js/dbhelper.js"></script>
-  <script src="js/main.js"></script>
+	<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+	<script src="js/dbhelper.js"></script>
+	<script src="js/main.js"></script>
 
 </body>
 
