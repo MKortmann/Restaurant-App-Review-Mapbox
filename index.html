@@ -15,14 +15,14 @@
 
 <body>
 	<!--Skip link for keyboard users-->
-	<a href="#neighborhoods-select" class="skip-link">Skip to filter content</a>
+	<a href="#neighborhoods-select" class="skip-link" aria-label="Skip to filter content">Skip to filter content</a>
 	<!--Header-->
 	<header tabindex="-1">
-		<nav>
+		<nav role="navigation">
 			<h1>
 				<span>
-					<a href="/" tabindex="-1" class="navRestaurant">Restaurant</a>
-					<a href="/" tabindex="-1" class="nav-reviews">Reviews</a>
+					<a href="/" aria-label="Home" tabindex="-1" class="navRestaurant">Restaurant</a>
+					<a href="/" aria-label="Home" tabindex="-1" class="nav-reviews">Reviews</a>
 				</span>
 			</h1>
 		</nav>
@@ -36,25 +36,24 @@
 	<!--Leaflet Map-->
 	<main id="maincontent">
 		<div id="map-container">
-			<div id="map" aria-label="You are the map view: use the arrows keys to move
-      the map to any direction. Use the plus or minus keys to zoom in or out">
+			<div id="map" aria-label="location" role="application">
 			</div>
-		</div>
+	</div>
 
 		<!--Selection Box:  Neighborhoods and Cuisines-->
-		<div class="filter-options">
-			<div class="selection">
-				<select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-label="Filter option selected is:">
+		<section class="filter-options" aria-label="selection box">
+			<div class="selection" aria-label="filter section">
+				<select id="neighborhoods-select" name="neighborhoods" onchange="updateRestaurants()" aria-label="Filter by:">
 					<option value="all">All Neighborhoods</option>
 				</select>
-				<select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-label="Filter option selected is:">
+				<select id="cuisines-select" name="cuisines" onchange="updateRestaurants()" aria-label="Filter by:">
 					<option value="all">All Cuisines</option>
 				</select>
 			</div>
-		</div>
+		</section>
 
 		<!--COLUMN DROP technique: restaurant list-->
-		<div class="container" id="restaurants-list" tabindex="0" aria-label="List of filtered restaurants"></div>
+		<div class="container" id="restaurants-list" tabindex="0" role="region" aria-live="polite"></div>
 
 	</main>
 

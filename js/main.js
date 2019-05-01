@@ -267,13 +267,16 @@ createRestaurantHTML = (restaurant) => {
 	const image = document.createElement('img');
 	image.className = 'restaurant-img';
 	/*Alt as requested if the image is needed!*/
-	image.alt = restaurant.id + ".jpg";
+	image.alt = "Restaurant: " + restaurant.name;
 	image.src = DBHelper.imageUrlForRestaurant(restaurant);
 	element_div.append(image);
 
-	const name = document.createElement('h1');
+	const name = document.createElement('header');
 	name.innerHTML = restaurant.name;
 	element_div.append(name);
+
+	const space = document.createElement("br");
+	element_div.append(space);
 
 	const neighborhood = document.createElement('p');
 	neighborhood.innerHTML = restaurant.neighborhood;

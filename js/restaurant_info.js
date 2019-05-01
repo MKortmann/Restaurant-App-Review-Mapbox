@@ -129,8 +129,9 @@ fillRestaurantHoursHTML = (operatingHours = self.restaurant.operating_hours) => 
  */
 fillReviewsHTML = (reviews = self.restaurant.reviews) => {
 	const container = document.getElementById('reviews-container');
-	const title = document.createElement('h2');
+	const title = document.createElement('header');
 	title.innerHTML = 'Reviews';
+
 	container.appendChild(title);
 
 	if (!reviews) {
@@ -150,7 +151,7 @@ fillReviewsHTML = (reviews = self.restaurant.reviews) => {
  */
 createReviewHTML = (review) => {
 	const li = document.createElement('li');
-	const name = document.createElement('h2');
+	const name = document.createElement('h3');
 	name.innerHTML = review.name;
 	const span = document.createElement("span");
 
@@ -172,23 +173,12 @@ createReviewHTML = (review) => {
 	li.appendChild(span);
 
 	const span2 = document.createElement("span");
-	const dateAndRating = document.createElement('h3');
+	const dateAndRating = document.createElement('h4');
 
 	// dateAndRating.innerHTML = review.date + " - " +`Rating: ${review.rating}`;
 	dateAndRating.innerHTML = review.date;
 	span2.appendChild(dateAndRating);
-	// span2.appendChild(dateAndRating);
 
-	// let  imgStar = 0;
-	// for(let i=0; i<review.rating; i++)
-	// {
-	//   imgStar = document.createElement("img");
-	//
-	//   imgStar.src = "./img/star.svg";
-	//   imgStar.alt = "star";
-	//   imgStar.setAttribute("class", "cStars");
-	//   span.appendChild(imgStar);
-	// }
 	li.appendChild(span2);
 
 	const comments = document.createElement('p');

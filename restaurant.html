@@ -22,17 +22,17 @@
 		<nav tabindex="-1">
 			<h1>
 				<span>
-					<a href="/" tabindex="-1" class="navRestaurant">Restaurant</a>
-					<a href="/" tabindex="-1" class="nav-reviews">Reviews</a>
+					<a href="/" aria-label="Home" tabindex="-1" class="navRestaurant">Restaurant</a>
+					<a href="/" aria-label="Home" tabindex="-1" class="nav-reviews">Reviews</a>
 				</span>
 			</h1>
 		</nav>
 		<!-- Beginning breadcrumb -->
-		<div id="breadcrumb" tabindex="-1">
+		<nav id="breadcrumb" tabindex="-1" role="navigation" aria-label="Breadcrumb">
 			<li>
-        <a href="/">Home</a>
+        <a href="/" aria-label="Home">Home</a>
       </li>
-		</div>
+		</nav>
 		<!-- End breadcrumb -->
 		<!-- End nav -->
 	</header>
@@ -42,18 +42,16 @@
 	<main id="maincontent">
 		<!-- Beginning map -->
 		<section id="map-container">
-			<div id="map" aria-label="You are the map view: use the arrows keys to move
-      the map to any direction."></div>
+			<div id="map" aria-label="location" role="application"></div>
 		</section>
 		<!-- End map -->
 		<!-- Beginning restaurant -->
-		<section id="restaurant-container">
-			<h1 id="restaurant-name" tabindex="0" aria-label="use the tab key to move
-        up and down!"></h1>
-			<h2 class="restaurant-cuisine"></h2>
+		<section id="restaurant-container" aria-label="restaurant section">
+			<header id="restaurant-name" tabindex="0"></header>
 
 			<img id="restaurant-img">
-			<p class="restaurant-cuisine">Address</p>
+			<!-- <p class="restaurant-cuisine">Address</p> -->
+			<p class="restaurant-cuisine"></p>
 			<p id="restaurant-address"></p>
 			<table id="restaurant-hours" tabindex="0">
 				<tr>
@@ -64,8 +62,8 @@
 		</section>
 		<!-- end restaurant -->
 		<!-- Beginning reviews -->
-		<section id="reviews-container" tabindex="0">
-			<div id="reviews-list"></div>
+		<section id="reviews-container" tabindex="0" aria-label="review section">
+			<div id="reviews-list" aria-label="review list"></div>
 		</section>
 		<!-- End reviews -->
 	</main>

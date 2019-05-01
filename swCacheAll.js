@@ -27,7 +27,6 @@ self.addEventListener("activate", event => {
   );
 })
 
-
 //Implement the fetch event to make the content available offline
 //*Version 2: THIS IS WHERE THE REAL WORK COMES*/
 
@@ -54,29 +53,3 @@ self.addEventListener("fetch", event => {
       }).catch(err => caches.match(event.request).then(res => res))
   );
 });
-
-
-// self.addEventListener("fetch", (event) => {
-//     console.log("Service Worker: Fetching");
-//     event.respondWith(
-//         caches.match(event.request).then(response => {
-//             if (response) {
-//                 return response;
-//
-//             } else {
-//                 return fetch(event.request)
-//                     .then(response => {
-//                         const responseClone = response.clone();
-//                         caches.open(cacheName)
-//                             .then(cache => {
-//                                 cache.put(event.request, responseClone);
-//                             })
-//                         return response;
-//
-//                     })
-//                     .catch(err => console.error(err));
-//             }
-//         })
-//
-//     );
-// });

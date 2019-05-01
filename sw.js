@@ -63,7 +63,6 @@ self.addEventListener("activate", event => {
   );
 })
 
-
 //Implement the fetch event to make the content available offline
 /*Version 1: I think this does not work because of the maps*/
 self.addEventListener("fetch", event => {

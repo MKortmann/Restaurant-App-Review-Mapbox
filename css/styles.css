@@ -48,7 +48,7 @@ restaurant.html and in the last we have css queries for web responsive.*/
 
 /* ====================== HTML, BODY, GENERAL BASICS  ====================== */
 html {
-	max-width: 100%;
+	width: 100%;
 }
 
 body,
@@ -56,9 +56,13 @@ td,
 th,
 p {
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 14pt;
-	line-height: 1.5;
+	font-size: 16pt;
+	line-height: 1.3;
 	text-align: center;
+}
+
+p {
+	line-height: 1.6;
 }
 
 th {
@@ -78,7 +82,7 @@ body {
 	margin: 0;
 	position: relative;
 	/*important to fit in the html*/
-	max-width: 100%;
+	width: 100%;
 }
 
 ul,
@@ -149,11 +153,11 @@ nav h1 {
 
 nav h1 a {
 	color: black;
-	font-size: 30pt;
+	font-size: 37pt;
 	font-weight: 200;
 	letter-spacing: 10px;
 	text-transform: uppercase;
-	line-height: 2.0;
+	line-height: 1.7;
 	/* offset-x | offset-y | blur-radius | color */
 	text-shadow:
 		1px -1px 0 #767676,
@@ -240,7 +244,7 @@ nav h1 a {
 }
 
 #map {
-	height: 400px;
+	min-height: 400px;
 	width: 100%;
 	background-color: #ccc;
 }
@@ -301,10 +305,6 @@ nav h1 a {
 }
 
 /* ====================== Restaurant Listing ====================== */
-#restaurant-name {
-	color: #3397DB;
-}
-
 #restaurants-list {
 	background-color: white;
 	list-style: outside none none;
@@ -335,7 +335,8 @@ nav h1 a {
 }
 
 #restaurants-list p {
-	margin: 0;
+	margin-top: 0;
+	margin-bottom: 0;
 	font-size: 14pt;
 }
 
@@ -348,10 +349,6 @@ nav h1 a {
 div .box {
 	margin-left: 2px;
 	margin-bottom: 2px;
-}
-
-.box p {
-	padding-bottom: 5px;
 }
 
 .box a {
@@ -371,7 +368,10 @@ div .box {
 	/*necessary to be inside the box*/
 	box-sizing: border-box;
 	transition: all 500ms ease;
+	margin-top: 10px;
 }
+
+
 
 /*creates a pseudo-element that is the first child of the selected element
 Used to add cosmetic content to an element*/
@@ -408,6 +408,17 @@ a:before {
 	border: solid 10px red;
 }
 
+header {
+color: black;
+font-size: 40px;
+font-family: Helvetica;
+text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+}
+
+#restaurants-list footer {
+	margin-top: 10px;
+}
+
 /* ====================== Footer ====================== */
 
 #footer {
@@ -425,11 +436,26 @@ a:before {
 }
 
 /* ====================== Restaurant Details ====================== */
+#breadcrumb {
+	position: abosolute;
+	padding: 10px 0 10px 0;
+	margin-bottom: 0;
+	max-height: 30px;
+	top: 80px;
+}
 .inside header {
-	position: fixed;
-	top: 0;
+	/* position: fixed;
+	top: 0; */
+	font-size: 36px;
 	width: 100%;
 	z-index: 1000;
+	padding-top: 0px;
+	padding-bottom: 10px;
+}
+
+#reviews-container header {
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 .inside .leaflet-container {
@@ -453,7 +479,7 @@ a:before {
 }
 
 .inside #map {
-	height: 100%;
+	min-height: 100%;
 	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
@@ -469,6 +495,9 @@ a:before {
 	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.4);
 }
 
+.inside th {
+	font-size: 20pt;
+}
 .inside #footer {
 	bottom: 0;
 	position: fixed;
@@ -491,9 +520,8 @@ a:before {
 	border: solid 2px black;
 }
 
-#restaurant-cuisine {
+.restaurant-cuisine {
 	color: #3397DB;
-	;
 	font-size: 18pt;
 	font-weight: 300;
 	letter-spacing: 3px;
@@ -508,7 +536,7 @@ a:before {
 #reviews-container {
 	border-bottom: 1px solid #d9d9d9;
 	border-top: 1px solid #fff;
-	padding: 140px 0px 0 0px;
+	padding: 0px 0px 0 0px;
 	/*top, right, bottom and left*/
 	width: 50%;
 }
@@ -554,8 +582,21 @@ a:before {
 	margin-top: 30px;
 	margin-bottom: 15px;
 }
-
 #reviews-container h3 {
+	background-color: #3397DB;
+	color: black;
+	font-size: 24pt;
+	font-weight: 300;
+	letter-spacing: -1px;
+	padding-bottom: 1pt;
+	/*top, right, bottom and left*/
+	margin-top: 30px;
+	margin-bottom: 15px;
+}
+
+#reviews-container h4 {
+	font-weight: bold;
+	font-size: 18px;
 	margin-top: 30px;
 	margin-bottom: 20px;
 	text-align: left;
@@ -629,29 +670,8 @@ tbody tr:nth-child(odd) {
 /*This should be write in the end, if not, it does not work*/
 /* ====================== 1600 ====================== */
 @media screen and (max-width: 1600px) {
-	#restaurant-container {
-		padding: 130px 5px 5px 28px;
-		/*top, right, bottom and left*/
-	}
-
 	.inside #map-container {
 		height: 77.0%;
-	}
-}
-
-/* ====================== 1500 ====================== */
-@media screen and (max-width: 1500px) {
-	#restaurant-container {
-		padding: 130px 5px 5px 22px;
-		/*top, right, bottom and left*/
-	}
-}
-
-/* ====================== 1350 ====================== */
-@media screen and (max-width: 1350px) {
-	#restaurant-container {
-		padding: 130px 5px 5px 22px;
-		/*top, right, bottom and left*/
 	}
 }
 
@@ -701,24 +721,32 @@ tbody tr:nth-child(odd) {
 	#restaurant-container {
 		width: 100%;
 		text-align: center;
-		padding: 730px 5px 5px 2px;
+		margin-left: auto;
+		margin-right: auto;
+		padding: 610px 5px 0px 5px;
 		/*top, right, bottom and left*/
 	}
 }
+
+/* ====================== 750 ====================== */
+@media screen and (max-width: 750px) {
+
+	/*Restaurant html*/
+	#restaurant-container {
+		padding: 610px 5px 5px 5px;
+		/*top, right, bottom and left*/
+	}
+
+}
+
 
 /* ====================== 880 ====================== */
 @media screen and (max-width: 880px) {
 
 	/*Restaurant html*/
 	#restaurant-container {
-		padding: 715px 5px 5px 0px;
+		padding: 610px 5px 5px 5px;
 		/*top, right, bottom and left*/
-	}
-
-	.inside #map-container {
-		margin-left: auto;
-		margin-right: auto;
-		width: 90.0%;
 	}
 
 	nav h1 a {
@@ -733,7 +761,7 @@ tbody tr:nth-child(odd) {
 	}
 
 	.inside #map-container {
-		width: 95.0%;
+		width: 93.0%;
 	}
 
 }
@@ -785,15 +813,25 @@ tbody tr:nth-child(odd) {
 
 	/*Restaurant html*/
 	#restaurant-container {
-		padding: 770px 5px 5px 0px;
+		padding: 600px 5px 5px 0px;
 		/*top, right, bottom and left*/
 	}
 
+	.inside #map-container {
+		width: 90.0%;
+	}
 }
 
 /* ====================== 420 ====================== */
 
 @media screen and (max-width: 420px) {
+
+	/*Restaurant html*/
+	#restaurant-container {
+		padding: 620px 5px 5px 0px;
+		/*top, right, bottom and left*/
+	}
+
 	.navRestaurant {
 		display: none;
 	}
@@ -817,7 +855,7 @@ tbody tr:nth-child(odd) {
 
 	/*Restaurant html*/
 	#restaurant-container {
-		padding: 790px 5px 5px 0px;
+		padding: 630px 5px 5px 0px;
 	}
 
 	#restaurants-list p {
@@ -853,7 +891,7 @@ tbody tr:nth-child(odd) {
 	/*resturant.html*/
 	#restaurant-container {
 		/*top, right, bottom and left*/
-		padding: 805px 0px 5px 0px;
+		padding: 640px 0px 5px 0px;
 	}
 
 	#reviews-list li {
